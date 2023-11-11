@@ -16,7 +16,7 @@ public class IABlocks {
         DeferredRegister.create(ForgeRegistries.BLOCKS, CreateIceAge.MOD_ID);
 
     public static final RegistryObject<LiquidBlock> LIQUID_ICE_BLOCK = BLOCKS.register("liquid_ice_block",
-            () -> new LiquidBlock(IAFluids.SOURCE_LIQUID_ICE, BlockBehaviour.Properties.copy(Blocks.WATER)));
+            () -> new LiquidIceBlock(IAFluids.SOURCE_LIQUID_ICE, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

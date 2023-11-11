@@ -18,7 +18,7 @@ public class IAFluidType {
             DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, CreateIceAge.MOD_ID);
 
     public static final RegistryObject<FluidType> FROZEN_ICE_FLUID_TYPE = register("liquid_ice_fluid",
-            FluidType.Properties.create().density(15).viscosity(5).temperature(0));
+            FluidType.Properties.create().density(917).viscosity(1000).temperature(273).supportsBoating(false).motionScale(0.0008D));
 
     private static RegistryObject<FluidType> register(String name, FluidType.Properties properties) {
         return FLUID_TYPES.register(name, () -> new BaseFluidType(properties, LIQUID_ICE_STILL_RL, LIQUID_ICE_FLOWING_RL, LIQUID_ICE_OVERLAY_RL,
