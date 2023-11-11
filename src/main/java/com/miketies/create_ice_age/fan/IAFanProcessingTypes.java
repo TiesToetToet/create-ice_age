@@ -78,26 +78,27 @@ public class IAFanProcessingTypes {
                     .multiply(1, 0.05f, 1)
                     .normalize()
                     .scale(0.15f));
-            level.addParticle(ParticleTypes.ANGRY_VILLAGER, pos.x, pos.y + 0.45f, pos.z, 0, 0, 0);
+            level.addParticle(ParticleTypes.ITEM_SNOWBALL, pos.x, pos.y + 0.45f, pos.z, 0, 0, 0);
             if(level.random.nextInt(2) == 0) {
-                level.addParticle(ParticleTypes.END_ROD, pos.x, pos.y + 0.25f, pos.z, 0, 0, 0);
+                level.addParticle(ParticleTypes.SNOWFLAKE, pos.x, pos.y + 0.25f, pos.z, 0, 0, 0);
             }
         }
 
         @Override
         public void morphAirFlow(AirFlowParticleAccess particleAccess, RandomSource random) {
-            particleAccess.setColor(Color.mixColors(0x0, 0xc2f1f2, random.nextFloat()));
+            particleAccess.setColor(Color.mixColors(0x20c3d0, 0xc2f1f2, random.nextFloat()));
             particleAccess.setAlpha(1f);
             if (random.nextFloat() < 1 / 128f)
-                particleAccess.spawnExtraParticle(ParticleTypes.ANGRY_VILLAGER, .125f);
+                particleAccess.spawnExtraParticle(ParticleTypes.ITEM_SNOWBALL, .125f);
             if (random.nextFloat() < 1 / 32f)
-                particleAccess.spawnExtraParticle(ParticleTypes.END_ROD, .125f);
+                particleAccess.spawnExtraParticle(ParticleTypes.SNOWFLAKE, .125f);
         }
 
         @Override
         public void affectEntity(Entity entity, Level level) {
             if(entity instanceof LivingEntity livingEntity) {
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 10, 0, false, false));
+                // freeze the entity for 11 seconds, of which 4 are being actually frozen
+                livingEntity.setTicksFrozen(220);
             }
         }
     }
