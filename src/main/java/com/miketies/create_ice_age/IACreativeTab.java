@@ -1,7 +1,6 @@
 package com.miketies.create_ice_age;
 
-import com.miketies.create_ice_age.IAItems;
-import com.miketies.create_ice_age.CreateIceAge;
+import com.miketies.create_ice_age.item.IAItems;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import it.unimi.dsi.fastutil.objects.ReferenceArrayList;
 import it.unimi.dsi.fastutil.objects.ReferenceLinkedOpenHashSet;
@@ -71,6 +70,7 @@ public class IACreativeTab {
             for (Item item : items) {
                 output.accept(item);
             }
+            output.accept(IAItems.LIQUID_ICE_BUCKET.get());
         }
 
 //        List<Item> exclude = List.of(CAItems.CAKE_BASE.get(), CAItems.CAKE_BASE_BAKED.get());

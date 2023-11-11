@@ -1,8 +1,13 @@
 {
   "_": "Items",
   "item.create_ice_age.ice_cake": "Ice Cake",
+  "item.create_ice_age.liquid_ice_bucket": "Liquid Ice Bucket",
+
+  "_": "Blocks",
+  "block.create_ice_age.liquid_ice_block": "Liquid Ice",
 
 
   "_": "Misc",
-  "itemGroup.create_ice_age.ice_age_creative_tab": "Create Ice Age"
+  "itemGroup.create_ice_age.ice_age_creative_tab": "Create Ice Age",
+  "fluid_type.create_ice_age.liquid_ice_fluid": "Liquid Ice"
 }

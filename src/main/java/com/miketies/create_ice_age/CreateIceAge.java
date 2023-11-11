@@ -1,11 +1,18 @@
 package com.miketies.create_ice_age;
 
+import com.miketies.create_ice_age.block.IABlocks;
+import com.miketies.create_ice_age.fan.IAFanProcessingTypes;
+import com.miketies.create_ice_age.fluid.IAFluidType;
+import com.miketies.create_ice_age.fluid.IAFluids;
+import com.miketies.create_ice_age.item.IAItems;
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -39,11 +46,22 @@ public class CreateIceAge {
     public CreateIceAge() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        IABlocks.register(modEventBus);
+
         IAItems.register(modEventBus);
+
+        IACreativeTab.register(modEventBus);
+
+        IAFluids.register(modEventBus);
+        IAFluidType.register(modEventBus);
+
+
+        IARecipeTypes.register(modEventBus);
+        IAFanProcessingTypes.register();
+
 
         ICE_AGE_REGISTRATE.registerEventListeners(modEventBus);
 
-        IACreativeTab.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -81,8 +99,8 @@ public class CreateIceAge {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
+//            ItemBlockRenderTypes.setRenderLayer(IAFluids.SOURCE_LIQUID_ICE.get(), RenderType.translucent());
+//            ItemBlockRenderTypes.setRenderLayer(IAFluids.FLOWING_LIQUID_ICE.get(), RenderType.translucent());
         }
     }
 }
