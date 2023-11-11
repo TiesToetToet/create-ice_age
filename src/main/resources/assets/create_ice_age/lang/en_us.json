@@ -9,5 +9,10 @@
 
   "_": "Misc",
   "itemGroup.create_ice_age.ice_age_creative_tab": "Create Ice Age",
-  "fluid_type.create_ice_age.liquid_ice_fluid": "Liquid Ice"
+  "fluid_type.create_ice_age.liquid_ice_fluid": "Liquid Ice",
+
+
+  "_": "JEI",
+  "create.recipe.fan_freezing": "Bulk Freezing",
+  "create.recipe.fan_freezing.fan": "Fan Behind Liquid Ice"
 }

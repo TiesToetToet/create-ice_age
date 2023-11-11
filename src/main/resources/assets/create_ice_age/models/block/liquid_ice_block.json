@@ -1,0 +1,5 @@
+{
+  "textures": {
+    "particle": "create_ice_age:block/liquid_ice_still"
+  }
+}

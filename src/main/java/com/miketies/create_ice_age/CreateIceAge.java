@@ -13,6 +13,7 @@ import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -102,5 +103,9 @@ public class CreateIceAge {
 //            ItemBlockRenderTypes.setRenderLayer(IAFluids.SOURCE_LIQUID_ICE.get(), RenderType.translucent());
 //            ItemBlockRenderTypes.setRenderLayer(IAFluids.FLOWING_LIQUID_ICE.get(), RenderType.translucent());
         }
+    }
+
+    public static ResourceLocation asResource(String path) {
+        return new ResourceLocation(MOD_ID, path);
     }
 }
