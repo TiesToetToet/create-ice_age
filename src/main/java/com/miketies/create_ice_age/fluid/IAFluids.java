@@ -23,7 +23,7 @@ public class IAFluids {
             () -> new ForgeFlowingFluid.Flowing(IAFluids.LIQUID_ICE_PROPERTIES));
 
     public static final ForgeFlowingFluid.Properties LIQUID_ICE_PROPERTIES = new ForgeFlowingFluid.Properties(
-            IAFluidType.FROZEN_ICE_FLUID_TYPE, SOURCE_LIQUID_ICE, FLOWING_LIQUID_ICE)
+            IAFluidType.LIQUID_ICE_FLUID_TYPE, SOURCE_LIQUID_ICE, FLOWING_LIQUID_ICE)
             .slopeFindDistance(1)
             .levelDecreasePerBlock(3)
             .block(IABlocks.LIQUID_ICE_BLOCK)

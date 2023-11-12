@@ -1,6 +1,5 @@
 package com.miketies.create_ice_age.fan;
 
-import com.miketies.create_ice_age.CreateIceAge;
 import com.miketies.create_ice_age.IARecipeTypes;
 import com.miketies.create_ice_age.fluid.IAFluidType;
 import com.simibubi.create.Create;
@@ -12,8 +11,6 @@ import com.simibubi.create.foundation.utility.VecHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -43,7 +40,7 @@ public class IAFanProcessingTypes {
         @Override
         public boolean isValidAt(Level level, BlockPos pos) {
             FluidState fluidState = level.getFluidState(pos);
-            if(fluidState.getType().getFluidType().equals(IAFluidType.FROZEN_ICE_FLUID_TYPE.get())) {
+            if(fluidState.getType().getFluidType().equals(IAFluidType.LIQUID_ICE_FLUID_TYPE.get())) {
                 return true;
             }
             return false;
@@ -99,8 +96,10 @@ public class IAFanProcessingTypes {
         @Override
         public void affectEntity(Entity entity, Level level) {
             if(entity instanceof LivingEntity livingEntity) {
-                // freeze the entity for 11 seconds, of which 4 are being actually frozen
-                livingEntity.setTicksFrozen(220);
+                if(livingEntity.canFreeze()) {
+                    // freeze the entity for 11 seconds, of which 4 are being actually frozen
+                    livingEntity.setTicksFrozen(220);
+                }
             }
         }
     }

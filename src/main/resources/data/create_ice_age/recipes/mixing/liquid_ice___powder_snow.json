@@ -1,0 +1,17 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "amount": 500,
+      "fluid": "create_ice_age:liquid_ice_fluid"
+    },
+    {
+      "item": "minecraft:bucket"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:powder_snow_bucket"
+    }
+  ]
+}

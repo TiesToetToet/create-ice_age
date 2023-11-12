@@ -20,7 +20,10 @@ public class LiquidIceBlock extends LiquidBlock {
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         super.entityInside(pState, pLevel, pPos, pEntity);
         if (pEntity instanceof LivingEntity livingEntity) {
-            livingEntity.setTicksFrozen(220);
+            if(livingEntity.canFreeze()) {
+                // freeze the entity for 11 seconds, of which 4 are being actually frozen
+                livingEntity.setTicksFrozen(220);
+            }
         }
     }
 }

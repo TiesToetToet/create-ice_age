@@ -18,9 +18,9 @@ import static com.miketies.create_ice_age.CreateIceAge.ICE_AGE_REGISTRATE;
 public class IAItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CreateIceAge.MOD_ID);
 
-    public static final ItemEntry<CombustibleItem> ICE_CAKE = ICE_AGE_REGISTRATE.item("ice_cake", CombustibleItem::new)
+    public static final ItemEntry<FreezerItem> ICE_CAKE = ICE_AGE_REGISTRATE.item("ice_cake", FreezerItem::new)
             .tag(AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
-            .onRegister(i -> i.setBurnTime(6400))
+            .onRegister(i -> i.setFreezeTime(6400))
             .register();
 
     public static final RegistryObject<Item> LIQUID_ICE_BUCKET = ITEMS.register("liquid_ice_bucket",

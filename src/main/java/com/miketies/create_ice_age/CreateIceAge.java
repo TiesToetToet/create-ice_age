@@ -1,5 +1,6 @@
 package com.miketies.create_ice_age;
 
+import com.miketies.create_ice_age.block.IABlockEntities;
 import com.miketies.create_ice_age.block.IABlocks;
 import com.miketies.create_ice_age.fan.IAFanProcessingTypes;
 import com.miketies.create_ice_age.fluid.IAFluidType;
@@ -48,6 +49,7 @@ public class CreateIceAge {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         IABlocks.register(modEventBus);
+        IABlockEntities.register();
 
         IAItems.register(modEventBus);
 
