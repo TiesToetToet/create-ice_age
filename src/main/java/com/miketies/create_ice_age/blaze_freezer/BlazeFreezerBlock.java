@@ -6,6 +6,7 @@ import com.miketies.create_ice_age.item.IAItems;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
+import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.utility.Lang;
 import net.minecraft.core.BlockPos;
@@ -33,7 +34,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE<BlazeFreezerBlockEntity>, IWrenchable {
-    public static final EnumProperty<FreezingLevel> FREEZE_LEVEL = EnumProperty.create("blaze", FreezingLevel.class);
+//    public static final EnumProperty<BlazeBurnerBlock.HeatLevel> HEAT_LEVEL = EnumProperty.create("blaze", BlazeBurnerBlock.HeatLevel.class);
+    public static final EnumProperty<FreezingLevel> FREEZE_LEVEL = EnumProperty.create("blazee", FreezingLevel.class);
+//    public static final EnumProperty<BlazeBurnerBlock.HeatLevel> HEAT_LEVEL = EnumProperty.create("blaze", BlazeBurnerBlock.HeatLevel.class);
     public BlazeFreezerBlock(Properties pProperties) {
         super(pProperties);
         registerDefaultState(defaultBlockState().setValue(FREEZE_LEVEL, FreezingLevel.NONE));
@@ -86,7 +89,7 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
 
     @Override
     public Item asItem() {
-        return IABlocks.BLAZE_FREEZER.get().asItem();
+        return AllBlocks.BLAZE_BURNER.get().asItem();
     }
 
     @Override
