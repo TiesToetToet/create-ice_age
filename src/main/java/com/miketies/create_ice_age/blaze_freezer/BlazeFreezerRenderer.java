@@ -1,6 +1,7 @@
 package com.miketies.create_ice_age.blaze_freezer;
 
 import com.jozufozu.flywheel.core.PartialModel;
+import com.miketies.create_ice_age.IAPartialModels;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.simibubi.create.AllPartialModels;
@@ -67,11 +68,15 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
 
         boolean active = true;
 
-        PartialModel blazeModel = switch (heatLevel) {
-            case NONE -> active ? AllPartialModels.BLAZE_SUPER_ACTIVE : AllPartialModels.BLAZE_SUPER;
-            case FREEZING -> active ? AllPartialModels.BLAZE_ACTIVE : AllPartialModels.BLAZE_IDLE;
-            default -> AllPartialModels.BLAZE_INERT;
-        };
+//        PartialModel blazeModel = switch (heatLevel) {
+//            case NONE -> active ? AllPartialModels.BLAZE_SUPER_ACTIVE : AllPartialModels.BLAZE_SUPER;
+//            case FREEZING -> active ? AllPartialModels.BLAZE_ACTIVE : AllPartialModels.BLAZE_IDLE;
+//            default -> AllPartialModels.BLAZE_INERT;
+//        };
+
+//        PartialModel blazeModel = IAPartialModels.BLAZE_FREEZER_FREEZING;
+        PartialModel blazeModel = AllPartialModels.BLAZE_SUPER_ACTIVE;
+
 
         SuperByteBuffer blazeBuffer = CachedBufferer.partial(blazeModel, blockState);
         blazeBuffer.translate(0, headY, 0);
