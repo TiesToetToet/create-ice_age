@@ -1,0 +1,13 @@
+{
+  "type": "create:freezing",
+  "ingredients": [
+    {
+      "item": "create:blaze_burner"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_ice_age:blaze_freezer"
+    }
+  ]
+}

@@ -1,13 +1,10 @@
 package com.miketies.create_ice_age.blaze_freezer;
 
 import com.miketies.create_ice_age.block.IABlockEntities;
-import com.miketies.create_ice_age.block.IABlocks;
 import com.miketies.create_ice_age.item.IAItems;
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
-import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.utility.Lang;
 import net.minecraft.core.BlockPos;
@@ -101,7 +98,7 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
 
     @Override
     public Item asItem() {
-        return AllBlocks.BLAZE_BURNER.get().asItem();
+        return IAItems.BLAZE_FREEZER.get().asItem();
     }
 
     @Override
@@ -111,13 +108,13 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
 
     @Override
     public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
-        return new ItemStack(AllBlocks.BLAZE_BURNER.get());
+        return new ItemStack(IAItems.BLAZE_FREEZER.get());
     }
 
     @Override
     public List<ItemStack> getDrops(BlockState pState, LootParams.Builder pParams) {
         var ret = new ArrayList<ItemStack>();
-        ret.add(new ItemStack(AllBlocks.BLAZE_BURNER.get()));
+        ret.add(new ItemStack(IAItems.BLAZE_FREEZER.get()));
         return ret;
     }
 

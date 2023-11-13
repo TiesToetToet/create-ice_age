@@ -79,6 +79,7 @@ public class IACreativeTab {
         public void accept(CreativeModeTab.ItemDisplayParameters params, CreativeModeTab.Output output) {
             List<Item> items = new LinkedList<>();
             items.addAll(collectItems(ICE_AGE_CREATIVE_TAB, item -> false));
+            items.addAll(collectBlocks(ICE_AGE_CREATIVE_TAB, item -> false));
 
             outputAll(output, items);
         }
