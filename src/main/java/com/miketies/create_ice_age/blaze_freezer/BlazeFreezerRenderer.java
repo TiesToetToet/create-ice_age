@@ -1,5 +1,6 @@
 package com.miketies.create_ice_age.blaze_freezer;
 
+import com.ibm.icu.text.MessagePattern;
 import com.jozufozu.flywheel.core.PartialModel;
 import com.miketies.create_ice_age.IAPartialModels;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -91,6 +92,20 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
             gogglesBuffer.translate(0, headY + 8 / 16f, 0);
             draw(gogglesBuffer, horizontalAngle, ps, solid);
         }
+
+
+        PartialModel rodsBig = IAPartialModels.BLAZE_FREEZER_RODS_BIG;
+        PartialModel rodsSmall = IAPartialModels.BLAZE_FREEZER_RODS_SMALL;
+
+        SuperByteBuffer rodsBufferBig = CachedBufferer.partial(rodsBig, blockState);
+        rodsBufferBig.translate(0, offset2 + animation - 3 / 16f,0)
+                .light(LightTexture.FULL_BRIGHT)
+                .renderInto(ps, solid);
+
+        SuperByteBuffer rodsBufferSmall = CachedBufferer.partial(rodsSmall, blockState);
+        rodsBufferSmall.translate(0, offset1 + animation + .125f, 0)
+                .light(LightTexture.FULL_BRIGHT)
+                .renderInto(ps, solid);
 
 //        if (!smouldering) {
 //            PartialModel rodsModel = heatLevel == HeatLevel.SEETHING
