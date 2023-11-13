@@ -7,6 +7,7 @@ import com.miketies.create_ice_age.fluid.IAFluidType;
 import com.miketies.create_ice_age.fluid.IAFluids;
 import com.miketies.create_ice_age.item.IAItems;
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.CreateClient;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
@@ -21,6 +22,7 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -74,6 +76,8 @@ public class CreateIceAge {
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
+
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreateIceAgeClient.onCtorClient(modEventBus));
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
 //        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);

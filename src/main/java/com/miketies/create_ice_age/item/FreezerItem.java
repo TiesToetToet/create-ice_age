@@ -43,7 +43,9 @@ public class FreezerItem extends Item {
         BlockState blockState = level.getBlockState(blockPos);
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
         if(blockState.getBlock() instanceof BlazeBurnerBlock &&
-                blockEntity instanceof BlazeBurnerBlockEntity) {
+                blockEntity instanceof BlazeBurnerBlockEntity bbbe) {
+            // TODO: check if blaze has goggles
+//            boolean goggle = bbbe.getBlockState().getValue(MAX_STACK_SIZE)
             if(!level.isClientSide()) {
 //                level.setBlockAndUpdate(blockPos, Blocks.ACACIA_LOG.defaultBlockState());
                 level.setBlockAndUpdate(blockPos, IABlocks.BLAZE_FREEZER.getDefaultState()

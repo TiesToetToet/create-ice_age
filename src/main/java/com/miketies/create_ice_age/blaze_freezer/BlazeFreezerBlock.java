@@ -4,6 +4,7 @@ import com.miketies.create_ice_age.block.IABlockEntities;
 import com.miketies.create_ice_age.block.IABlocks;
 import com.miketies.create_ice_age.item.IAItems;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
@@ -55,6 +56,17 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
             heldItem = player.getMainHandItem().copy();
         } else {
             heldItem = player.getMainHandItem();
+        }
+
+        if (AllItems.GOGGLES.isIn(heldItem)) {
+            return onBlockEntityUse(level, pos, bfbe -> {
+                if (bfbe.goggles) {
+                    return InteractionResult.PASS;
+                }
+                bfbe.goggles = true;
+                bfbe.notifyUpdate();
+                return InteractionResult.SUCCESS;
+            });
         }
 
         if(!heldItem.isEmpty()) {

@@ -41,7 +41,7 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
         ps.pushPose();
 
 //        renderItem(be, partialTicks, animation, ps, bufferSource);
-        renderBlaze(be, horizontalAngle, animation, ps, bufferSource);
+        renderBlaze(be, horizontalAngle, -0.125f, ps, bufferSource);
 //        renderBook(be, partialTicks, horizontalAngle, ps, bufferSource);
 
         ps.popPose();
@@ -56,7 +56,7 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
 //        boolean active = be.processingTicks > 0 && be.processingTicks < 200;
         float time = AnimationTickHolder.getRenderTime(be.getLevel());
         float renderTick = time + (be.hashCode() % 13) * 16f;
-        float offsetMult = heatLevel.isAtLeast(BlazeFreezerBlock.FreezingLevel.FREEZING) ? 64 : 16;
+        float offsetMult = heatLevel.isAtLeast(BlazeFreezerBlock.FreezingLevel.NONE) ? 64 : 16;
         float offset = Mth.sin((float) ((renderTick / 16f) % (2 * Math.PI))) / offsetMult;
         float offset1 = Mth.sin((float) ((renderTick / 16f + Math.PI) % (2 * Math.PI))) / offsetMult;
         float offset2 = Mth.sin((float) ((renderTick / 16f + Math.PI / 2) % (2 * Math.PI))) / offsetMult;
@@ -75,7 +75,8 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
 //        };
 
 //        PartialModel blazeModel = IAPartialModels.BLAZE_FREEZER_FREEZING;
-        PartialModel blazeModel = AllPartialModels.BLAZE_SUPER_ACTIVE;
+        PartialModel blazeModel = IAPartialModels.BLAZE_FREEZER_HEAD;
+//        PartialModel blazeModel = AllPartialModels.BLAZE_SUPER_ACTIVE;
 
 
         SuperByteBuffer blazeBuffer = CachedBufferer.partial(blazeModel, blockState);
