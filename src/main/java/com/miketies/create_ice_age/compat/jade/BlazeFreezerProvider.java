@@ -1,7 +1,6 @@
 package com.miketies.create_ice_age.compat.jade;
 
-import com.miketies.create_ice_age.CreateIceAge;
-import com.miketies.create_ice_age.blaze_freezer.BlazeFreezerBlockEntity;
+import com.miketies.create_ice_age.super_freezer.blaze_freezer.BlazeFreezerBlockEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -25,6 +24,7 @@ public enum BlazeFreezerProvider implements IBlockComponentProvider, IServerData
         if (remainingFreezeTime > 0) {
             tooltip.add(IElementHelper.get().smallItem(new ItemStack(Items.ICE)));
             tooltip.append(IThemeHelper.get().seconds(compoundTag.getInt("remainingFreezeTime")));
+//            tooltip.add(Component.translatable("create_ice_age.jade.string", compoundTag.getInt("remainingFreezeTime")));
         }
     }
 

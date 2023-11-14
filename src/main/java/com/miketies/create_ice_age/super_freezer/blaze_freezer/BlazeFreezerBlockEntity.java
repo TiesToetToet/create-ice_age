@@ -1,6 +1,6 @@
-package com.miketies.create_ice_age.blaze_freezer;
+package com.miketies.create_ice_age.super_freezer.blaze_freezer;
 
-import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
+import com.miketies.create_ice_age.CreateIceAge;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.utility.AngleHelper;
@@ -106,6 +106,7 @@ public class BlazeFreezerBlockEntity extends SmartBlockEntity {
     }
 
     public void addRemainingFreezeTime(int remainingFreezeTime) {
+        CreateIceAge.LOGGER.info("Adding " + remainingFreezeTime + " to " + this.remainingFreezeTime);
         this.remainingFreezeTime += remainingFreezeTime;
     }
 

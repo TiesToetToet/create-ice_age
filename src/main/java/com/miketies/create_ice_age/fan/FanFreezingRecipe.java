@@ -7,9 +7,9 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 
-public class FreezingRecipe extends ProcessingRecipe<FreezingRecipe.FreezingWrapper> {
-    public FreezingRecipe(ProcessingRecipeBuilder.ProcessingRecipeParams params) {
-        super(IARecipeTypes.FREEZING, params);
+public class FanFreezingRecipe extends ProcessingRecipe<FanFreezingRecipe.FreezingWrapper> {
+    public FanFreezingRecipe(ProcessingRecipeBuilder.ProcessingRecipeParams params) {
+        super(IARecipeTypes.FAN_FREEZING, params);
     }
 
     @Override

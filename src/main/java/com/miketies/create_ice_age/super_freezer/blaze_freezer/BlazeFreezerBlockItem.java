@@ -1,4 +1,4 @@
-package com.miketies.create_ice_age.blaze_freezer;
+package com.miketies.create_ice_age.super_freezer.blaze_freezer;
 
 import com.miketies.create_ice_age.block.IABlocks;
 import net.minecraft.world.item.BlockItem;

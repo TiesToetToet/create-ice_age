@@ -1,5 +1,6 @@
-package com.miketies.create_ice_age.blaze_freezer;
+package com.miketies.create_ice_age.super_freezer.blaze_freezer;
 
+import com.miketies.create_ice_age.CreateIceAge;
 import com.miketies.create_ice_age.block.IABlockEntities;
 import com.miketies.create_ice_age.item.FreezerItem;
 import com.miketies.create_ice_age.item.IAItems;
@@ -28,7 +29,6 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.openjdk.nashorn.internal.ir.annotations.Ignore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,16 +72,9 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
 
         boolean consume = !player.isCreative();
         if(!heldItem.isEmpty()) {
-//            if(heldItem.is(IAItems.ICE_CAKE.get())) {
-//                if(!level.isClientSide()) {
-//                    if (!doNotConsume) {
-//                        heldItem.shrink(1);
-//                    }
-//                }
-//                return InteractionResult.SUCCESS;
-//            }
             if (heldItem.getItem() instanceof FreezerItem freezerItem) {
                 int freezeTime = freezerItem.getFreezeTime();
+                CreateIceAge.LOGGER.info("Freeze time: " + freezeTime);
                 if (level.getBlockEntity(pos) instanceof BlazeFreezerBlockEntity tileEntity) {
                     if (freezeTime > 0 && tileEntity.getRemainingFreezeTime() + freezeTime <= BlazeFreezerBlockEntity.MAX_FREEZE_TIME) {
                         if (!level.isClientSide()) {

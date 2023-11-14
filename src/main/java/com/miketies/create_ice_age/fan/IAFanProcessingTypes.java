@@ -3,7 +3,6 @@ package com.miketies.create_ice_age.fan;
 import com.miketies.create_ice_age.CreateIceAge;
 import com.miketies.create_ice_age.IARecipeTypes;
 import com.miketies.create_ice_age.fluid.IAFluidType;
-import com.simibubi.create.Create;
 import com.simibubi.create.content.kinetics.fan.processing.FanProcessingType;
 import com.simibubi.create.content.kinetics.fan.processing.FanProcessingTypeRegistry;
 import com.simibubi.create.foundation.recipe.RecipeApplier;
@@ -35,7 +34,7 @@ public class IAFanProcessingTypes {
     }
 
     public static class FreezingType implements FanProcessingType {
-        private static final FreezingRecipe.FreezingWrapper WRAPPER = new FreezingRecipe.FreezingWrapper();
+        private static final FanFreezingRecipe.FreezingWrapper WRAPPER = new FanFreezingRecipe.FreezingWrapper();
 
         @Override
         public boolean isValidAt(Level level, BlockPos pos) {
@@ -54,14 +53,14 @@ public class IAFanProcessingTypes {
         @Override
         public boolean canProcess(ItemStack stack, Level level) {
             WRAPPER.setItem(0, stack);
-            Optional<FreezingRecipe> recipe = IARecipeTypes.FREEZING.find(WRAPPER, level);
+            Optional<FanFreezingRecipe> recipe = IARecipeTypes.FAN_FREEZING.find(WRAPPER, level);
             return recipe.isPresent();
         }
 
         @Override
         public @Nullable List<ItemStack> process(ItemStack stack, Level level) {
             WRAPPER.setItem(0, stack);
-            Optional<FreezingRecipe> recipe = IARecipeTypes.FREEZING.find(WRAPPER, level);
+            Optional<FanFreezingRecipe> recipe = IARecipeTypes.FAN_FREEZING.find(WRAPPER, level);
             if(recipe.isPresent()) {
                 return RecipeApplier.applyRecipeOn(level, stack, recipe.get());
             }

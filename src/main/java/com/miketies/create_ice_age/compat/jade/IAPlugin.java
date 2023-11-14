@@ -1,10 +1,9 @@
 package com.miketies.create_ice_age.compat.jade;
 
 import com.miketies.create_ice_age.CreateIceAge;
-import com.miketies.create_ice_age.blaze_freezer.BlazeFreezerBlock;
-import com.miketies.create_ice_age.blaze_freezer.BlazeFreezerBlockEntity;
+import com.miketies.create_ice_age.super_freezer.blaze_freezer.BlazeFreezerBlock;
+import com.miketies.create_ice_age.super_freezer.blaze_freezer.BlazeFreezerBlockEntity;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;

@@ -1,7 +1,7 @@
 package com.miketies.create_ice_age;
 
-import com.miketies.create_ice_age.fan.FreezingRecipe;
-import com.simibubi.create.Create;
+import com.miketies.create_ice_age.super_freezer.SuperFreezingRecipe;
+import com.miketies.create_ice_age.fan.FanFreezingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
@@ -23,7 +23,8 @@ import java.util.Optional;
 import java.util.function.Supplier;
 
 public enum IARecipeTypes implements IRecipeTypeInfo {
-    FREEZING(FreezingRecipe::new);
+    FAN_FREEZING(FanFreezingRecipe::new),
+    SUPER_FREEZING(SuperFreezingRecipe::new);
 
     private final ResourceLocation id;
     private final RegistryObject<RecipeSerializer<?>> serializerObject;

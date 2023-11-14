@@ -1,7 +1,7 @@
 package com.miketies.create_ice_age.block;
 
 import com.miketies.create_ice_age.CreateIceAge;
-import com.miketies.create_ice_age.blaze_freezer.BlazeFreezerBlock;
+import com.miketies.create_ice_age.super_freezer.blaze_freezer.BlazeFreezerBlock;
 import com.miketies.create_ice_age.fluid.IAFluids;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.SharedProperties;

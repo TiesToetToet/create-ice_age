@@ -1,11 +1,10 @@
 package com.miketies.create_ice_age.compat.jei;
 import com.miketies.create_ice_age.CreateIceAge;
 import com.miketies.create_ice_age.IARecipeTypes;
-import com.miketies.create_ice_age.fan.FreezingRecipe;
+import com.miketies.create_ice_age.fan.FanFreezingRecipe;
 import com.miketies.create_ice_age.item.IAItems;
 import com.simibubi.create.AllFluids;
 import com.simibubi.create.AllItems;
-import com.simibubi.create.Create;
 import com.simibubi.create.compat.jei.*;
 import com.simibubi.create.compat.jei.category.CreateRecipeCategory;
 import com.simibubi.create.compat.jei.category.ProcessingViaFanCategory;
@@ -35,7 +34,6 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -61,8 +59,8 @@ public class CreateIceAgeJEI implements IModPlugin {
         
         CreateRecipeCategory<?>
                 
-        freezing = builder(FreezingRecipe.class)
-                .addTypedRecipes(IARecipeTypes.FREEZING)
+        freezing = builder(FanFreezingRecipe.class)
+                .addTypedRecipes(IARecipeTypes.FAN_FREEZING)
                 .catalystStack(ProcessingViaFanCategory.getFan("fan_freezing"))
                 .doubleItemIcon(AllItems.PROPELLER.get(), IAItems.LIQUID_ICE_BUCKET.get())
                 .emptyBackground(178, 72)
