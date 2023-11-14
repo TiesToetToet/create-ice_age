@@ -1,5 +1,6 @@
 package com.miketies.create_ice_age.fan;
 
+import com.miketies.create_ice_age.CreateIceAge;
 import com.miketies.create_ice_age.IARecipeTypes;
 import com.miketies.create_ice_age.fluid.IAFluidType;
 import com.simibubi.create.Create;
@@ -26,8 +27,7 @@ public class IAFanProcessingTypes {
     public static final FanProcessingType FREEZING = register("freezing", new FreezingType());
 
     private static <T extends FanProcessingType> T register(String id, T type) {
-        // TODO: use CreateIceAge.MODID instead of Create.MODID, but it doesn't work for some reason
-        FanProcessingTypeRegistry.register(Create.asResource(id), type);
+        FanProcessingTypeRegistry.register(CreateIceAge.asResource(id), type);
         return type;
     }
 

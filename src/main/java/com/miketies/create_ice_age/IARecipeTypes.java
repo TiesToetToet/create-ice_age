@@ -33,7 +33,7 @@ public enum IARecipeTypes implements IRecipeTypeInfo {
 
     IARecipeTypes(Supplier<RecipeSerializer<?>> serializerSupplier, Supplier<RecipeType<?>> typeSupplier, boolean registerType) {
         String name = Lang.asId(name());
-        id = Create.asResource(name);
+        id = CreateIceAge.asResource(name);
         serializerObject = Registers.SERIALIZER_REGISTER.register(name, serializerSupplier);
         if (registerType) {
             typeObject = Registers.TYPE_REGISTER.register(name, typeSupplier);
@@ -46,7 +46,7 @@ public enum IARecipeTypes implements IRecipeTypeInfo {
 
     IARecipeTypes(Supplier<RecipeSerializer<?>> serializerSupplier) {
         String name = Lang.asId(name());
-        id = Create.asResource(name);
+        id = CreateIceAge.asResource(name);
         serializerObject = Registers.SERIALIZER_REGISTER.register(name, serializerSupplier);
         typeObject = Registers.TYPE_REGISTER.register(name, () -> RecipeType.simple(id));
         type = typeObject;
@@ -82,7 +82,7 @@ public enum IARecipeTypes implements IRecipeTypeInfo {
     }
 
     private static class Registers {
-        private static final DeferredRegister<RecipeSerializer<?>> SERIALIZER_REGISTER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Create.ID);
-        private static final DeferredRegister<RecipeType<?>> TYPE_REGISTER = DeferredRegister.create(Registries.RECIPE_TYPE, Create.ID);
+        private static final DeferredRegister<RecipeSerializer<?>> SERIALIZER_REGISTER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, CreateIceAge.MOD_ID);
+        private static final DeferredRegister<RecipeType<?>> TYPE_REGISTER = DeferredRegister.create(Registries.RECIPE_TYPE, CreateIceAge.MOD_ID);
     }
 }

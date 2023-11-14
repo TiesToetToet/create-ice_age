@@ -268,7 +268,7 @@ public class CreateIceAgeJEI implements IModPlugin {
             }
 
             CreateRecipeCategory.Info<T> info = new CreateRecipeCategory.Info<>(
-                    new mezz.jei.api.recipe.RecipeType<>(Create.asResource(name), recipeClass),
+                    new mezz.jei.api.recipe.RecipeType<>(CreateIceAge.asResource(name), recipeClass),
                     Lang.translateDirect("recipe." + name), background, icon, recipesSupplier, catalysts);
             CreateRecipeCategory<T> category = factory.create(info);
             categories.add(category);

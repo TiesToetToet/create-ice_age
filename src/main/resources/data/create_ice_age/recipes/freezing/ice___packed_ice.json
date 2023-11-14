@@ -1,5 +1,5 @@
 {
-  "type": "create:freezing",
+  "type": "create_ice_age:freezing",
   "ingredients": [
     {
       "item": "minecraft:ice"
