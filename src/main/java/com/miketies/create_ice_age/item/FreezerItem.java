@@ -30,33 +30,33 @@ public class FreezerItem extends Item {
         this.freezeTime = freezeTime;
     }
 
-    @Override
-    public InteractionResult useOn(UseOnContext context) {
-        Level level = context.getLevel();
-        Player player = context.getPlayer();
-        if(player == null) {
-            return InteractionResult.PASS;
-        }
-
-        ItemStack itemStack = context.getItemInHand();
-        BlockPos blockPos = context.getClickedPos();
-        BlockState blockState = level.getBlockState(blockPos);
-        BlockEntity blockEntity = level.getBlockEntity(blockPos);
-        if(blockState.getBlock() instanceof BlazeBurnerBlock &&
-                blockEntity instanceof BlazeBurnerBlockEntity bbbe) {
-            // TODO: check if blaze has goggles
-//            boolean goggle = bbbe.getBlockState().getValue(MAX_STACK_SIZE)
-            if(!level.isClientSide()) {
-//                level.setBlockAndUpdate(blockPos, Blocks.ACACIA_LOG.defaultBlockState());
-                level.setBlockAndUpdate(blockPos, IABlocks.BLAZE_FREEZER.getDefaultState()
-                        .setValue(BlazeFreezerBlock.FACING, level.getBlockState(blockPos).getValue(BlazeBurnerBlock.FACING))
-                );
-                if(level.getBlockEntity(blockPos) instanceof BlazeFreezerBlockEntity tileEntity) {
-                    // TODO: Set freeze time
-                }
-            }
-            return InteractionResult.SUCCESS;
-        }
-        return InteractionResult.PASS;
-    }
+//    @Override
+//    public InteractionResult useOn(UseOnContext context) {
+//        Level level = context.getLevel();
+//        Player player = context.getPlayer();
+//        if(player == null) {
+//            return InteractionResult.PASS;
+//        }
+//
+//        ItemStack itemStack = context.getItemInHand();
+//        BlockPos blockPos = context.getClickedPos();
+//        BlockState blockState = level.getBlockState(blockPos);
+//        BlockEntity blockEntity = level.getBlockEntity(blockPos);
+//        if(blockState.getBlock() instanceof BlazeBurnerBlock &&
+//                blockEntity instanceof BlazeBurnerBlockEntity bbbe) {
+//            // TODO: check if blaze has goggles
+////            boolean goggle = bbbe.getBlockState().getValue(MAX_STACK_SIZE)
+//            if(!level.isClientSide()) {
+////                level.setBlockAndUpdate(blockPos, Blocks.ACACIA_LOG.defaultBlockState());
+//                level.setBlockAndUpdate(blockPos, IABlocks.BLAZE_FREEZER.getDefaultState()
+//                        .setValue(BlazeFreezerBlock.FACING, level.getBlockState(blockPos).getValue(BlazeBurnerBlock.FACING))
+//                );
+//                if(level.getBlockEntity(blockPos) instanceof BlazeFreezerBlockEntity tileEntity) {
+//                    // TODO: Set freeze time
+//                }
+//            }
+//            return InteractionResult.SUCCESS;
+//        }
+//        return InteractionResult.PASS;
+//    }
 }

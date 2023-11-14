@@ -13,6 +13,10 @@
   "create.recipe.fan_freezing": "Bulk Freezing",
   "create.recipe.fan_freezing.fan": "Fan Behind Liquid Ice",
 
+  "_": "jade",
+  "create_ice_age.blaze_freezer.tooltip": "\n",
+  "config.jade.plugin_create_ice_age.blaze_freezer": "Blaze Freezer Config",
+
 
   "_": "Misc",
   "itemGroup.create_ice_age.ice_age_creative_tab": "Create Ice Age",

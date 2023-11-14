@@ -1,31 +1,22 @@
 package com.miketies.create_ice_age.blaze_freezer;
 
-import com.ibm.icu.text.MessagePattern;
 import com.jozufozu.flywheel.core.PartialModel;
 import com.miketies.create_ice_age.IAPartialModels;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.simibubi.create.AllPartialModels;
-import com.simibubi.create.content.kinetics.belt.transport.TransportedItemStack;
-import com.simibubi.create.foundation.blockEntity.renderer.SafeBlockEntityRenderer;
 import com.simibubi.create.foundation.blockEntity.renderer.SmartBlockEntityRenderer;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
 import com.simibubi.create.foundation.utility.AngleHelper;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.util.TransformationHelper;
 
 public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerBlockEntity> {
 
@@ -76,7 +67,13 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
 //        };
 
 //        PartialModel blazeModel = IAPartialModels.BLAZE_FREEZER_FREEZING;
-        PartialModel blazeModel = IAPartialModels.BLAZE_FREEZER_HEAD;
+        PartialModel blazeModel;
+        BlazeFreezerBlock.FreezingLevel freezingLevel = BlazeFreezerBlock.getFreezeLevel(be.getBlockState());
+        if (freezingLevel.equals(BlazeFreezerBlock.FreezingLevel.NONE)) {
+            blazeModel = IAPartialModels.BLAZE_FREEZER_IDLE_HEAD;
+        } else {
+            blazeModel = IAPartialModels.BLAZE_FREEZER_ACTIVE_HEAD;
+        }
 //        PartialModel blazeModel = AllPartialModels.BLAZE_SUPER_ACTIVE;
 
 
@@ -94,18 +91,20 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
         }
 
 
-        PartialModel rodsBig = IAPartialModels.BLAZE_FREEZER_RODS_BIG;
-        PartialModel rodsSmall = IAPartialModels.BLAZE_FREEZER_RODS_SMALL;
+        if (freezingLevel.equals(BlazeFreezerBlock.FreezingLevel.FREEZING)) {
+            PartialModel rodsBig = IAPartialModels.BLAZE_FREEZER_RODS_BIG;
+            PartialModel rodsSmall = IAPartialModels.BLAZE_FREEZER_RODS_SMALL;
 
-        SuperByteBuffer rodsBufferBig = CachedBufferer.partial(rodsBig, blockState);
-        rodsBufferBig.translate(0, offset2 + animation - 3 / 16f,0)
-                .light(LightTexture.FULL_BRIGHT)
-                .renderInto(ps, solid);
+            SuperByteBuffer rodsBufferBig = CachedBufferer.partial(rodsBig, blockState);
+            rodsBufferBig.translate(0, offset2 + animation - 3 / 16f,0)
+                    .light(LightTexture.FULL_BRIGHT)
+                    .renderInto(ps, solid);
 
-        SuperByteBuffer rodsBufferSmall = CachedBufferer.partial(rodsSmall, blockState);
-        rodsBufferSmall.translate(0, offset1 + animation + .125f, 0)
-                .light(LightTexture.FULL_BRIGHT)
-                .renderInto(ps, solid);
+            SuperByteBuffer rodsBufferSmall = CachedBufferer.partial(rodsSmall, blockState);
+            rodsBufferSmall.translate(0, offset1 + animation + .125f, 0)
+                    .light(LightTexture.FULL_BRIGHT)
+                    .renderInto(ps, solid);
+        }
 
 //        if (!smouldering) {
 //            PartialModel rodsModel = heatLevel == HeatLevel.SEETHING

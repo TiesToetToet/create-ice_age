@@ -35,7 +35,7 @@ public class CreateIceAge {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "create_ice_age";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final CreateRegistrate ICE_AGE_REGISTRATE = CreateRegistrate.create(MOD_ID)
             .setCreativeTab(IACreativeTab.ICE_AGE_CREATIVE_TAB);

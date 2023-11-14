@@ -1,6 +1,7 @@
 package com.miketies.create_ice_age.blaze_freezer;
 
 import com.miketies.create_ice_age.block.IABlockEntities;
+import com.miketies.create_ice_age.item.FreezerItem;
 import com.miketies.create_ice_age.item.IAItems;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllShapes;
@@ -27,19 +28,22 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.openjdk.nashorn.internal.ir.annotations.Ignore;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE<BlazeFreezerBlockEntity>, IWrenchable {
 //    public static final EnumProperty<BlazeBurnerBlock.HeatLevel> HEAT_LEVEL = EnumProperty.create("blaze", BlazeBurnerBlock.HeatLevel.class);
-    public static final EnumProperty<FreezingLevel> FREEZE_LEVEL = EnumProperty.create("blazee", FreezingLevel.class);
+    public static final EnumProperty<FreezingLevel> FREEZE_LEVEL = EnumProperty.create("blaze", FreezingLevel.class);
 //    public static final EnumProperty<BlazeBurnerBlock.HeatLevel> HEAT_LEVEL = EnumProperty.create("blaze", BlazeBurnerBlock.HeatLevel.class);
     public BlazeFreezerBlock(Properties pProperties) {
         super(pProperties);
         registerDefaultState(defaultBlockState().setValue(FREEZE_LEVEL, FreezingLevel.NONE));
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         IBE.onRemove(state, level, pos, newState);
@@ -66,16 +70,32 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
             });
         }
 
+        boolean consume = !player.isCreative();
         if(!heldItem.isEmpty()) {
-            return onBlockEntityUse(level, pos, te -> {
-                if(heldItem.is(IAItems.ICE_CAKE.get())) {
-                    if(!level.isClientSide()) {
-                        heldItem.shrink(1);
+//            if(heldItem.is(IAItems.ICE_CAKE.get())) {
+//                if(!level.isClientSide()) {
+//                    if (!doNotConsume) {
+//                        heldItem.shrink(1);
+//                    }
+//                }
+//                return InteractionResult.SUCCESS;
+//            }
+            if (heldItem.getItem() instanceof FreezerItem freezerItem) {
+                int freezeTime = freezerItem.getFreezeTime();
+                if (level.getBlockEntity(pos) instanceof BlazeFreezerBlockEntity tileEntity) {
+                    if (freezeTime > 0 && tileEntity.getRemainingFreezeTime() + freezeTime <= BlazeFreezerBlockEntity.MAX_FREEZE_TIME) {
+                        if (!level.isClientSide()) {
+                            if (consume) {
+                                heldItem.shrink(1);
+                            }
+                            tileEntity.addRemainingFreezeTime(freezeTime);
+                            tileEntity.notifyUpdate();
+                            return InteractionResult.SUCCESS;
+                        }
                     }
-                    return InteractionResult.SUCCESS;
                 }
-                return InteractionResult.PASS;
-            });
+            }
+            return InteractionResult.PASS;
         }
         return InteractionResult.PASS;
     }
@@ -121,6 +141,10 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
         return getBlockEntityType().create(pPos, pState);
+    }
+
+    public static FreezingLevel getFreezeLevel(BlockState state) {
+        return state.hasProperty(FREEZE_LEVEL) ? state.getValue(FREEZE_LEVEL) : FreezingLevel.NONE;
     }
 
 
