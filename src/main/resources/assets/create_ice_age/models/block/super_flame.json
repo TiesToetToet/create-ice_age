@@ -4,6 +4,6 @@
   "flip-v": true,
   "model": "create:models/block/blaze_burner/blaze_flame.obj",
   "textures": {
-    "0": "create:block/blaze_burner_flame"
+    "0": "create:block/blaze_freezer_flame"
   }
 }

@@ -4,6 +4,6 @@
   "flip-v": true,
   "model": "create:models/block/blaze_burner/blaze_rods_large.obj",
   "textures": {
-    "0": "create_ice_age:block/blaze_freezer_freezing"
+    "0": "create_ice_age:block/blaze_freezer_active"
   }
 }

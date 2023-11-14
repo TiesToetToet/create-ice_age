@@ -46,6 +46,7 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
         BlazeFreezerBlock.FreezingLevel heatLevel = blockState.getValue(BlazeFreezerBlock.FREEZE_LEVEL);
 //        boolean smouldering = heatLevel == HeatLevel.SMOULDERING;
 //        boolean active = be.processingTicks > 0 && be.processingTicks < 200;
+        boolean blockAbove = animation > 0.125f;
         float time = AnimationTickHolder.getRenderTime(be.getLevel());
         float renderTick = time + (be.hashCode() % 13) * 16f;
         float offsetMult = heatLevel.isAtLeast(BlazeFreezerBlock.FreezingLevel.NONE) ? 64 : 16;
@@ -60,7 +61,6 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
 
         boolean active = true;
 
-//        PartialModel blazeModel = switch (heatLevel) {
 //            case NONE -> active ? AllPartialModels.BLAZE_SUPER_ACTIVE : AllPartialModels.BLAZE_SUPER;
 //            case FREEZING -> active ? AllPartialModels.BLAZE_ACTIVE : AllPartialModels.BLAZE_IDLE;
 //            default -> AllPartialModels.BLAZE_INERT;
@@ -70,9 +70,9 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
         PartialModel blazeModel;
         BlazeFreezerBlock.FreezingLevel freezingLevel = BlazeFreezerBlock.getFreezeLevel(be.getBlockState());
         if (freezingLevel.equals(BlazeFreezerBlock.FreezingLevel.NONE)) {
-            blazeModel = IAPartialModels.BLAZE_FREEZER_IDLE_HEAD;
+            blazeModel = IAPartialModels.BLAZE_FREEZER_INERT_HEAD;
         } else {
-            blazeModel = IAPartialModels.BLAZE_FREEZER_ACTIVE_HEAD;
+            blazeModel = IAPartialModels.BLAZE_FREEZER_IDLE_HEAD;
         }
 //        PartialModel blazeModel = AllPartialModels.BLAZE_SUPER_ACTIVE;
 
