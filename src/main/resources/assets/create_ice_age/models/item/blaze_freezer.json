@@ -6,7 +6,7 @@
   "model": "create:models/block/blaze_burner/item.obj",
   "textures": {
     "0": "create_ice_age:block/blaze_freezer_brazier",
-    "1": "create_ice_age:block/blaze_freezer_freezing",
+    "1": "create_ice_age:block/blaze_freezer_active",
     "particle": "create:block/dark_metal_block"
   },
   "display": {

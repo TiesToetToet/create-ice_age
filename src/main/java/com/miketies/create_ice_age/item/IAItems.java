@@ -24,6 +24,10 @@ public class IAItems {
                 .tag(AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
                 .onRegister(i -> i.setFreezeTime(2000))
                 .register();
+    public static final ItemEntry<Item> ICE_CAKE_BASE =
+            ICE_AGE_REGISTRATE.item("ice_cake_base", Item::new)
+                    .tag(AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
+                    .register();
 
     public static final ItemEntry<BlazeFreezerBlockItem> BLAZE_FREEZER =
             ICE_AGE_REGISTRATE.item("blaze_freezer", BlazeFreezerBlockItem::new)

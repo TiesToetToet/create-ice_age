@@ -1,0 +1,13 @@
+{
+  "type": "create_ice_age:freezing",
+  "ingredients": [
+    {
+      "item": "create:blaze_cake_base"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_ice_age:ice_cake_base"
+    }
+  ]
+}

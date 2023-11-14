@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"2": "create_ice_age:block/blaze_freezer_freezing",
-		"particle": "create_ice_age:block/blaze_freezer_freezing"
+		"2": "create_ice_age:block/blaze_freezer_active",
+		"particle": "create_ice_age:block/blaze_freezer_active"
 	},
 	"elements": [
 		{

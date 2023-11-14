@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "create_ice_age:ice_cake_base"
+    },
+    {
+      "fluid": "create_ice_age:liquid_ice_fluid",
+      "nbt": {},
+      "amount": 250
+    }
+  ],
+  "results": [
+    {
+      "item": "create_ice_age:ice_cake"
+    }
+  ]
+}
