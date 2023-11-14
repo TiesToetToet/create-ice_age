@@ -1,5 +1,5 @@
 {
-  "type": "create_ice_age:freezing",
+  "type": "create_ice_age:fan_freezing",
   "ingredients": [
     {
       "item": "create:blaze_burner"
