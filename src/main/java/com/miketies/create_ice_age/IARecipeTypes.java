@@ -1,7 +1,10 @@
 package com.miketies.create_ice_age;
 
+import com.miketies.create_ice_age.super_freezer.SuperFreezingBasinRecipe;
+import com.miketies.create_ice_age.super_freezer.SuperFreezingMixingRecipe;
 import com.miketies.create_ice_age.super_freezer.SuperFreezingRecipe;
 import com.miketies.create_ice_age.fan.FanFreezingRecipe;
+import com.miketies.create_ice_age.super_freezer.SuperFreezingRecipeBuilder;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
@@ -24,7 +27,9 @@ import java.util.function.Supplier;
 
 public enum IARecipeTypes implements IRecipeTypeInfo {
     FAN_FREEZING(FanFreezingRecipe::new),
-    SUPER_FREEZING(SuperFreezingRecipe::new);
+    SUPER_FREEZING(SuperFreezingRecipe::new),
+    SUPER_FREEZING_BASIN(SuperFreezingBasinRecipe::new),
+    SUPER_FREEZING_MIXING(SuperFreezingMixingRecipe::new);
 
     private final ResourceLocation id;
     private final RegistryObject<RecipeSerializer<?>> serializerObject;
@@ -58,6 +63,10 @@ public enum IARecipeTypes implements IRecipeTypeInfo {
     IARecipeTypes(ProcessingRecipeBuilder.ProcessingRecipeFactory<?> processingFactory) {
         this(() -> new ProcessingRecipeSerializer<>(processingFactory));
     }
+
+//    IARecipeTypes(SuperFreezingRecipeBuilder.ProcessingRecipeFactory<?> processingFactory) {
+//        this(() -> new ProcessingRecipeSerializer<>(processingFactory));
+//    }
 
     public static void register(IEventBus eventBus) {
         Registers.SERIALIZER_REGISTER.register(eventBus);

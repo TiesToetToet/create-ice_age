@@ -43,6 +43,10 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
         registerDefaultState(defaultBlockState().setValue(FREEZE_LEVEL, FreezingLevel.NONE));
     }
 
+    public static FreezingLevel getFreezingLevelOf(BlockState blockState) {
+        return blockState.getValue(FREEZE_LEVEL);
+    }
+
     @SuppressWarnings("deprecation")
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {

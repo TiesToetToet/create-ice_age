@@ -1,0 +1,13 @@
+{
+  "type": "create_ice_age:super_freezing_mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:cobblestone"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:stone"
+    }
+  ]
+}
