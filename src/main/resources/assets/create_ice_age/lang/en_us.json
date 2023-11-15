@@ -8,6 +8,7 @@
   "_": "Blocks",
   "block.create_ice_age.liquid_ice_block": "Liquid Ice",
   "block.create_ice_age.blaze_freezer": "Blaze Freezer",
+  "block.create_ice_age.basin_freezer_lid": "Freezer Lid",
 
 
   "_": "JEI",
@@ -17,6 +18,7 @@
   "_": "jade",
   "create_ice_age.jade.string": "%s",
   "config.jade.plugin_create_ice_age.blaze_freezer": "Blaze Freezer",
+  "config.jade.plugin_create_ice_age.basin_freezer_lid": "Basin Freezer Lid",
 
 
   "_": "Misc",

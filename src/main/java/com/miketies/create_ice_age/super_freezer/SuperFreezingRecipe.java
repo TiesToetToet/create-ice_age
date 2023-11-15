@@ -9,4 +9,16 @@ public class SuperFreezingRecipe extends BasinRecipe {
     public SuperFreezingRecipe(ProcessingRecipeBuilder.ProcessingRecipeParams params) {
         super(IARecipeTypes.SUPER_FREEZING, params);
     }
+
+    @Override
+    public String toString() {
+        return "SuperFreezingRecipe{" +
+                "id=" + id +
+                ", ingredients=" + ingredients +
+                ", results=" + results +
+                ", processingDuration=" + processingDuration +
+                ", requiredHeat=" + requiredHeat +
+                ", fluidResults=" + fluidResults +
+                '}';
+    }
 }

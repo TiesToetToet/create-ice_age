@@ -48,7 +48,6 @@ public enum IARecipeTypes implements IRecipeTypeInfo {
     IARecipeTypes(Supplier<RecipeSerializer<?>> serializerSupplier) {
         String name = Lang.asId(name());
         id = CreateIceAge.asResource(name);
-        CreateIceAge.LOGGER.info("Registering recipe type: " + name);
         CreateIceAge.LOGGER.info("Registering recipe type: " + id);
         serializerObject = Registers.SERIALIZER_REGISTER.register(name, serializerSupplier);
         typeObject = Registers.TYPE_REGISTER.register(name, () -> RecipeType.simple(id));
