@@ -37,7 +37,7 @@ public class IAItems {
 
     public static final ItemEntry<BasinFreezerLidBlockItem> BLAZE_FREEZER_LID =
             ICE_AGE_REGISTRATE.item("basin_freezer_lid", BasinFreezerLidBlockItem::new)
-                .model(AssetLookup.customBlockItemModel("blaze_freezer"))
+                .model(AssetLookup.customBlockItemModel("basin_freezer_lid"))
                 .register();
 
     public static final RegistryObject<Item> LIQUID_ICE_BUCKET = ITEMS.register("liquid_ice_bucket",

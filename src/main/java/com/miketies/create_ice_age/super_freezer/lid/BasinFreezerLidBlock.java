@@ -13,6 +13,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class BasinFreezerLidBlock extends Block implements IBE<BasinFreezerLidBlockEntity> {
+    private static final VoxelShape SHAPE = Shapes.or(box(0, 0, 0, 16, 2, 16), box(6, 2, 6, 10, 3, 10));
     public BasinFreezerLidBlock(Properties pProperties) {
         super(pProperties);
     }
@@ -29,7 +30,7 @@ public class BasinFreezerLidBlock extends Block implements IBE<BasinFreezerLidBl
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return Shapes.or(box(0, 0, 0, 16, 2, 16), box(6, 2, 6, 10, 3, 10));
+        return SHAPE;
     }
 
 
