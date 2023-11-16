@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "create_ice_age:block/basin_freezer_lid"
+    }
+  }
+}
