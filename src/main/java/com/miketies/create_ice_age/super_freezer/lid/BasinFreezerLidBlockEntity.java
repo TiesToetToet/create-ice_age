@@ -13,6 +13,8 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
 import java.util.List;
 import java.util.Optional;
@@ -73,7 +75,7 @@ public class BasinFreezerLidBlockEntity extends BasinOperatingBlockEntity {
                 // TODO: Add particles
             }
             if (!this.getLevel().isClientSide && this.freezingTime <= 0) {
-                CreateIceAge.LOGGER.info("done freezing");
+//                CreateIceAge.LOGGER.info("done freezing");
 //                CreateIceAge.LOGGER.info(String.valueOf(this.currentRecipe));
 //                CreateIceAge.LOGGER.info(String.valueOf(this.currentRecipe.getResultItem(null)));
                 CreateIceAge.LOGGER.info(String.valueOf(freezingTime));
@@ -123,7 +125,7 @@ public class BasinFreezerLidBlockEntity extends BasinOperatingBlockEntity {
         super.startProcessingBasin();
         this.running = true;
         this.freezingTime = this.currentRecipe instanceof ProcessingRecipe<?> processed ? processed.getProcessingDuration() : 20;
-        CreateIceAge.LOGGER.info("startProcessingBasin time: "+this.freezingTime);
+//        CreateIceAge.LOGGER.info("startProcessingBasin time: "+this.freezingTime);
     }
 
     @Override

@@ -74,7 +74,7 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
         if(!heldItem.isEmpty()) {
             if (heldItem.getItem() instanceof FreezerItem freezerItem) {
                 int freezeTime = freezerItem.getFreezeTime();
-                CreateIceAge.LOGGER.info("Freeze time: " + freezeTime);
+//                CreateIceAge.LOGGER.info("Freeze time: " + freezeTime);
                 if (level.getBlockEntity(pos) instanceof BlazeFreezerBlockEntity tileEntity) {
                     if (freezeTime > 0 && tileEntity.getRemainingFreezeTime() + freezeTime <= BlazeFreezerBlockEntity.MAX_FREEZE_TIME) {
                         if (!level.isClientSide()) {
@@ -84,11 +84,16 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
                             tileEntity.addRemainingFreezeTime(freezeTime);
                             tileEntity.notifyUpdate();
                             return InteractionResult.SUCCESS;
+                        } else {
+                            return InteractionResult.PASS;
                         }
+                    } else {
+                        return InteractionResult.PASS;
                     }
                 }
+            } else {
+                return InteractionResult.PASS;
             }
-            return InteractionResult.PASS;
         }
         return InteractionResult.PASS;
     }
