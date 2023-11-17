@@ -1,0 +1,6 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "0": "create_ice_age:block/blaze_freezer_flame_scroll"
+  }
+}

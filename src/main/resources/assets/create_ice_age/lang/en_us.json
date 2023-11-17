@@ -14,6 +14,8 @@
   "_": "JEI",
   "create.recipe.fan_freezing": "Bulk Freezing",
   "create.recipe.fan_freezing.fan": "Fan Behind Liquid Ice",
+  "create.recipe.super_freezing": "Super Freezing",
+  "create.recipe.super_freezing.freezing": "Super Freezing",
 
   "_": "jade",
   "create_ice_age.jade.string": "%s",

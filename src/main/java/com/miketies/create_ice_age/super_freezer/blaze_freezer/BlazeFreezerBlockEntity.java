@@ -1,6 +1,8 @@
 package com.miketies.create_ice_age.super_freezer.blaze_freezer;
 
 import com.miketies.create_ice_age.CreateIceAge;
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.utility.AngleHelper;
@@ -54,28 +56,42 @@ public class BlazeFreezerBlockEntity extends SmartBlockEntity {
 
     @OnlyIn(Dist.CLIENT)
     private void tickAnimation() {
-        float target = 0;
-        LocalPlayer player = Minecraft.getInstance().player;
-        if (player != null && !player.isInvisible()) {
-            double x;
-            double z;
-            if (isVirtual()) {
-                x = -4;
-                z = -10;
-            } else {
-                x = player.getX();
-                z = player.getZ();
+        boolean active = remainingFreezeTime > 0 && isValidBlockAbove();
+        if (!active) {
+            float target = 0;
+            LocalPlayer player = Minecraft.getInstance().player;
+            if (player != null && !player.isInvisible()) {
+                double x;
+                double z;
+                if (isVirtual()) {
+                    x = -4;
+                    z = -10;
+                } else {
+                    x = player.getX();
+                    z = player.getZ();
+                }
+                double dx = x - (getBlockPos().getX() + 0.5);
+                double dz = z - (getBlockPos().getZ() + 0.5);
+                target = AngleHelper.deg(-Mth.atan2(dz, dx)) - 90;
             }
-            double dx = x - (getBlockPos().getX() + 0.5);
-            double dz = z - (getBlockPos().getZ() + 0.5);
-            target = AngleHelper.deg(-Mth.atan2(dz, dx)) - 90;
+            target = headAngle.getValue() + AngleHelper.getShortestAngleDiff(headAngle.getValue(), target);
+            headAngle.chase(target, .25f, LerpedFloat.Chaser.exp(5));
+            headAngle.tickChaser();
+        } else {
+            headAngle.chase((AngleHelper.horizontalAngle(getBlockState().getOptionalValue(BlazeFreezerBlock.FACING)
+                    .orElse(Direction.SOUTH)) + 180) % 360, .125f, LerpedFloat.Chaser.EXP);
+            headAngle.tickChaser();
         }
-        target = headAngle.getValue() + AngleHelper.getShortestAngleDiff(headAngle.getValue(), target);
-        headAngle.chase(target, .25f, LerpedFloat.Chaser.exp(5));
-        headAngle.tickChaser();
 
-        headAnimation.chase(1, 0.25f, LerpedFloat.Chaser.exp(0.25f));
+        headAnimation.chase(active ? 1 : 0, 0.25f, LerpedFloat.Chaser.exp(0.25f));
         headAnimation.tickChaser();
+    }
+
+    public boolean isValidBlockAbove() {
+        if (isVirtual())
+            return false;
+        BlockState blockState = level.getBlockState(worldPosition.above());
+        return AllBlocks.BASIN.has(blockState) || blockState.getBlock() instanceof FluidTankBlock;
     }
 
     @Override

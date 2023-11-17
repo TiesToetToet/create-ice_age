@@ -5,6 +5,8 @@ import com.miketies.create_ice_age.IAPartialModels;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.simibubi.create.AllPartialModels;
+import com.simibubi.create.AllSpriteShifts;
+import com.simibubi.create.foundation.block.render.SpriteShiftEntry;
 import com.simibubi.create.foundation.blockEntity.renderer.SmartBlockEntityRenderer;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
@@ -33,7 +35,7 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
         ps.pushPose();
 
 //        renderItem(be, partialTicks, animation, ps, bufferSource);
-        renderBlaze(be, horizontalAngle, -0.125f, ps, bufferSource);
+        renderBlaze(be, horizontalAngle, animation, ps, bufferSource);
 //        renderBook(be, partialTicks, horizontalAngle, ps, bufferSource);
 
         ps.popPose();
@@ -53,13 +55,50 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
         float offset = Mth.sin((float) ((renderTick / 16f) % (2 * Math.PI))) / offsetMult;
         float offset1 = Mth.sin((float) ((renderTick / 16f + Math.PI) % (2 * Math.PI))) / offsetMult;
         float offset2 = Mth.sin((float) ((renderTick / 16f + Math.PI / 2) % (2 * Math.PI))) / offsetMult;
-        float headY = offset + (animation * .75f);
+        float headY = offset - (animation * .75f);
         VertexConsumer solid = buffer.getBuffer(RenderType.solid());
+        VertexConsumer cutout = buffer.getBuffer(RenderType.cutoutMipped());
+        float freezeTime = be.getRemainingFreezeTime();
 
         ps.pushPose();
-        ps.translate(0, .125, 0);
 
-        boolean active = true;
+        if (freezeTime > 0 && blockAbove) {
+            SpriteShiftEntry spriteShift = AllSpriteShifts.SUPER_BURNER_FLAME;
+//            IASpriteShiftEntry spriteShift = IASpriteShifts.FREEZER_FLAME;
+//            SpriteShiftEntry spriteShift = IASpriteShifts.FREEZER_FLAME;
+//            SpriteShiftEntry spriteShift2 = AllSpriteShifts.BURNER_FLAME;
+//            CreateIceAge.LOGGER.info("spriteShift: " + spriteShift.getOriginal());
+//            CreateIceAge.LOGGER.info("spriteShift: " + spriteShift.getTarget());
+//            CreateIceAge.LOGGER.info("spriteShift: " + spriteShift.getOriginalResourceLocation());
+//            CreateIceAge.LOGGER.info("spriteShift: " + spriteShift.getTargetResourceLocation());
+
+            float spriteWidth = spriteShift.getTarget()
+                    .getU1()
+                    - spriteShift.getTarget()
+                    .getU0();
+
+            float spriteHeight = spriteShift.getTarget()
+                    .getV1()
+                    - spriteShift.getTarget()
+                    .getV0();
+
+            float speed = 1 / 32f + 1 / 64f * heatLevel.ordinal();
+
+            double vScroll = speed * time;
+            vScroll = vScroll - Math.floor(vScroll);
+            vScroll = vScroll * spriteHeight / 2;
+
+            double uScroll = speed * time / 2;
+            uScroll = uScroll - Math.floor(uScroll);
+            uScroll = uScroll * spriteWidth / 2;
+
+            SuperByteBuffer flameBuffer = CachedBufferer.partial(AllPartialModels.BLAZE_BURNER_FLAME, blockState);
+            flameBuffer.shiftUVScrolling(spriteShift, (float) uScroll, (float) vScroll);
+            draw(flameBuffer, horizontalAngle, ps, cutout);
+        }
+//        ps.translate(0, .125, 0);
+
+//        boolean active = true;
 
 //            case NONE -> active ? AllPartialModels.BLAZE_SUPER_ACTIVE : AllPartialModels.BLAZE_SUPER;
 //            case FREEZING -> active ? AllPartialModels.BLAZE_ACTIVE : AllPartialModels.BLAZE_IDLE;

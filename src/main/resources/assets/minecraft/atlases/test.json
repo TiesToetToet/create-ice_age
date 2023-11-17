@@ -1,0 +1,12 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "create_ice_age:block/blaze_freezer_flame_scroll"
+    },
+    {
+      "type": "single",
+      "resource": "create_ice_age:block/blaze_freezer_flame"
+    }
+  ]
+}

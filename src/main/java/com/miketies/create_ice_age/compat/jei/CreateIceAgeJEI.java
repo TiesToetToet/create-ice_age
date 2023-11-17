@@ -1,8 +1,10 @@
 package com.miketies.create_ice_age.compat.jei;
 import com.miketies.create_ice_age.CreateIceAge;
 import com.miketies.create_ice_age.IARecipeTypes;
+import com.miketies.create_ice_age.block.IABlocks;
 import com.miketies.create_ice_age.fan.FanFreezingRecipe;
 import com.miketies.create_ice_age.item.IAItems;
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllFluids;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.compat.jei.*;
@@ -11,6 +13,7 @@ import com.simibubi.create.compat.jei.category.ProcessingViaFanCategory;
 import com.simibubi.create.content.equipment.blueprint.BlueprintScreen;
 import com.simibubi.create.content.fluids.potion.PotionFluid;
 import com.simibubi.create.content.logistics.filter.AbstractFilterScreen;
+import com.simibubi.create.content.processing.basin.BasinRecipe;
 import com.simibubi.create.content.redstone.link.controller.LinkedControllerScreen;
 import com.simibubi.create.content.trains.schedule.ScheduleScreen;
 import com.simibubi.create.foundation.config.ConfigBase;
@@ -64,7 +67,15 @@ public class CreateIceAgeJEI implements IModPlugin {
                 .catalystStack(ProcessingViaFanCategory.getFan("fan_freezing"))
                 .doubleItemIcon(AllItems.PROPELLER.get(), IAItems.LIQUID_ICE_BUCKET.get())
                 .emptyBackground(178, 72)
-                .build("fan_freezing", FanFreezingCategory::new);
+                .build("fan_freezing", FanFreezingCategory::new),
+
+        super_freezing = builder(BasinRecipe.class)
+                .addTypedRecipes(IARecipeTypes.SUPER_FREEZING)
+                .catalyst(IABlocks.BASIN_FREEZER_LID::get)
+                .catalyst(AllBlocks.BASIN::get)
+                .doubleItemIcon(AllBlocks.BASIN.get(), IABlocks.BASIN_FREEZER_LID.get())
+                .emptyBackground(177, 100)
+                .build("super_freezing", SuperFreezingCategory::new);
     }
 
     private <T extends Recipe<?>> CategoryBuilder<T> builder(Class<? extends T> recipeClass) {

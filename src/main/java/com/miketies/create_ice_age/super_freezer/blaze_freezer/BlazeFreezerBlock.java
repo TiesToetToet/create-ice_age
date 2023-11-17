@@ -7,6 +7,7 @@ import com.miketies.create_ice_age.item.IAItems;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
+import com.simibubi.create.content.processing.basin.BasinBlockEntity;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.utility.Lang;
 import net.minecraft.core.BlockPos;
@@ -43,10 +44,23 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
         registerDefaultState(defaultBlockState().setValue(FREEZE_LEVEL, FreezingLevel.NONE));
     }
 
-    @SuppressWarnings("deprecation")
+//    @SuppressWarnings("deprecation")
+//    @Override
+//    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+//        IBE.onRemove(state, level, pos, newState);
+//    }
+
+
     @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        IBE.onRemove(state, level, pos, newState);
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
+        if (level.isClientSide) {
+            return;
+        }
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (!(blockEntity instanceof BasinBlockEntity basinBlockEntity)) {
+            return;
+        }
+        basinBlockEntity.notifyChangeOfContents();
     }
 
     @Override
