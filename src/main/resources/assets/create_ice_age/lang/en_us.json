@@ -1,13 +1,13 @@
 {
   "_": "Items",
-  "item.create_ice_age.ice_cake": "Ice Cake",
-  "item.create_ice_age.ice_cake_base": "Ice Cake Base",
+  "item.create_ice_age.ice_cake": "Breeze Cake",
+  "item.create_ice_age.ice_cake_base": "Breeze Cake Base",
   "item.create_ice_age.liquid_ice_bucket": "Liquid Ice Bucket",
 
 
   "_": "Blocks",
   "block.create_ice_age.liquid_ice_block": "Liquid Ice",
-  "block.create_ice_age.blaze_freezer": "Blaze Freezer",
+  "block.create_ice_age.blaze_freezer": "Breeze Freezer",
   "block.create_ice_age.basin_freezer_lid": "Freezer Lid",
 
 
@@ -19,7 +19,7 @@
 
   "_": "jade",
   "create_ice_age.jade.string": "%s",
-  "config.jade.plugin_create_ice_age.blaze_freezer": "Blaze Freezer",
+  "config.jade.plugin_create_ice_age.blaze_freezer": "Breeze Freezer",
   "config.jade.plugin_create_ice_age.basin_freezer_lid": "Basin Freezer Lid",
 
 
