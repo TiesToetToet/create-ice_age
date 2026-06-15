@@ -1,0 +1,23 @@
+{
+  "type": "create_ice_age:freezing_lid",
+  "freeze_requirement": "freezing",
+  "ingredients": [
+    {
+      "item": "minecraft:ice"
+    },
+    {
+      "item": "minecraft:ice"
+    },
+    {
+      "item": "minecraft:ice"
+    },
+    {
+      "item": "minecraft:ice"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:packed_ice"
+    }
+  ]
+}

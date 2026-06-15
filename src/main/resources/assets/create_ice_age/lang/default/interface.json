@@ -1,0 +1,7 @@
+{
+  "itemGroup.create_ice_age.base": "Create Ice Age",
+
+  "create_ice_age.recipe.freezing_lid": "Freezing Lid",
+  "create_ice_age.recipe.freeze_requirement.super_freezing": "Super Freezing",
+  "create_ice_age.recipe.freeze_requirement.freezing": "Freezing"
+}

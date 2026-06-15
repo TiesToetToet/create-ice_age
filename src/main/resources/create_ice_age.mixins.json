@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.tiestoettoet.create_ice_age.foundation.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BasinBlockEntityMixin",
+    "BasinOperatingBlockEntityMixin",
+    "MechanicalMixerBlockEntityMixin"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

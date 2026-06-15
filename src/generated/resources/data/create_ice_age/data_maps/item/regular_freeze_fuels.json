@@ -1,0 +1,16 @@
+{
+  "values": {
+    "minecraft:blue_ice": {
+      "freeze_time": 3200
+    },
+    "minecraft:ice": {
+      "freeze_time": 800
+    },
+    "minecraft:packed_ice": {
+      "freeze_time": 1600
+    },
+    "minecraft:snowball": {
+      "freeze_time": 200
+    }
+  }
+}

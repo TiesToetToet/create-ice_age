@@ -1,0 +1,16 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "create_ice_age:fluid/liquid_ice_flow"
+    },
+    {
+      "type": "single",
+      "resource": "create_ice_age:fluid/liquid_ice_still"
+    },
+    {
+    "type": "single",
+    "resource": "create_ice_age:fluid/liquid_ice_overlay"
+    }
+  ]
+}

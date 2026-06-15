@@ -1,0 +1,15 @@
+// 1.21.1	2026-06-15T17:02:37.553022	Registrate Provider for create_ice_age [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+e7cf70607676a770e7789f5f86afbeba52b7b5eb assets/create_ice_age/blockstates/blaze_freezer.json
+a043c01421a1b145ae1c63ec6bf728eec209639b assets/create_ice_age/blockstates/liquid_ice.json
+3b81b158d745023c1837b8cb068430e968440e47 assets/create_ice_age/lang/en_ud.json
+86ad16f8f9a6eba437bf460a0bf7b2dd5579eb00 assets/create_ice_age/lang/en_us.json
+ba06eac75a3cd545b431f4929fa60395233fab2a assets/create_ice_age/models/block/liquid_ice.json
+314b5759efbe00312d38103391dbca054c7e825e assets/create_ice_age/models/item/blaze_freezer.json
+f677f117328ece9c2d795a08f0f23cbb0ce030bb assets/create_ice_age/models/item/ice_cake.json
+64751730acac19a5bcc42c9221a29ec8b1bd7cd2 assets/create_ice_age/models/item/ice_cake_base.json
+20d9747d1b229d867b52832948f1a7daf4e115f5 assets/create_ice_age/models/item/liquid_ice_bucket.json
+b4bdbebb5f8f4db31673182468cbb4a3c7a04701 data/create/tags/item/upright_on_belt.json
+a4b3cf49ab9047db7ff9afa08afafbce30b1ba82 data/create_ice_age/data_maps/item/super_freeze_fuels.json
+2676c31801a90548d62b9d2f590294c02df9ec34 data/create_ice_age/loot_table/blocks/blaze_freezer.json
+bb7b6f7f302ad860e4bf695fe03aef6d7a5b2533 data/create_ice_age/tags/entity_type/blaze_freezer_capturable.json
+390be4eb47990e2181d2175ec254ca59817bafa2 data/minecraft/tags/block/mineable/pickaxe.json

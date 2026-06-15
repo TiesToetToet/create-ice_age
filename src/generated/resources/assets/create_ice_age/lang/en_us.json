@@ -1,0 +1,13 @@
+{
+  "block.create_ice_age.blaze_freezer": "Blaze Freezer",
+  "block.create_ice_age.liquid_ice": "Liquid Ice",
+  "create_ice_age.recipe.freeze_requirement.freezing": "Freezing",
+  "create_ice_age.recipe.freeze_requirement.super_freezing": "Super Freezing",
+  "create_ice_age.recipe.freezing_lid": "Freezing Lid",
+  "fluid.create_ice_age.liquid_ice": "Liquid Ice",
+  "fluid.create_ice_age.powder_snow": "Powder Snow",
+  "item.create_ice_age.ice_cake": "Ice Cake",
+  "item.create_ice_age.ice_cake_base": "Ice Cake Base",
+  "item.create_ice_age.liquid_ice_bucket": "Liquid Ice Bucket",
+  "itemGroup.create_ice_age.base": "Create Ice Age"
+}
