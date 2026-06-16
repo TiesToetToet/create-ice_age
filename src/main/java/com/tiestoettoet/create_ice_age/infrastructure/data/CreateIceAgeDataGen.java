@@ -13,12 +13,15 @@ import com.simibubi.create.foundation.data.recipe.CreateMechanicalCraftingRecipe
 import com.simibubi.create.foundation.data.recipe.CreateRecipeProvider;
 import com.simibubi.create.foundation.data.recipe.CreateSequencedAssemblyRecipeGen;
 import com.simibubi.create.foundation.data.recipe.CreateStandardRecipeGen;
+import com.simibubi.create.foundation.ponder.CreatePonderPlugin;
 import com.simibubi.create.foundation.utility.FilesHelper;
 import com.simibubi.create.infrastructure.data.*;
 import com.tiestoettoet.create_ice_age.CreateIceAge;
 import com.tiestoettoet.create_ice_age.foundation.data.CreateIceAgeDatamapProvider;
 import com.tiestoettoet.create_ice_age.foundation.data.recipe.CreateIceAgeRecipeProvider;
+import com.tiestoettoet.create_ice_age.foundation.ponder.CreateIceAgePonderPlugin;
 import com.tterrag.registrate.providers.ProviderType;
+import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -81,7 +84,7 @@ public class CreateIceAgeDataGen {
 //            AllAdvancements.provideLang(langConsumer);
 //            AllSoundEvents.provideLang(langConsumer);
 //            AllKeys.provideLang(langConsumer);
-//            providePonderLang(langConsumer);
+            providePonderLang(langConsumer);
 //            new TagLangGenerator(langConsumer).generate();
         });
     }
@@ -99,5 +102,12 @@ public class CreateIceAgeDataGen {
             String value = entry.getValue().getAsString();
             consumer.accept(key, value);
         }
+    }
+
+    private static void providePonderLang(BiConsumer<String, String> consumer) {
+        // Register this since FMLClientSetupEvent does not run during datagen
+        PonderIndex.addPlugin(new CreateIceAgePonderPlugin());
+
+        PonderIndex.getLangAccess().provideLang(CreateIceAge.MOD_ID, consumer);
     }
 }

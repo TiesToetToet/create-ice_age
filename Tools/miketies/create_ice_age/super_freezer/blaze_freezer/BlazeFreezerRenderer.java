@@ -1,4 +1,4 @@
-package com.miketies.create_ice_age.super_freezer.blaze_freezer;
+package com.miketies.create_ice_age.super_freezer.breeze_freezer;
 
 import com.jozufozu.flywheel.core.PartialModel;
 import com.miketies.create_ice_age.IAPartialModels;
@@ -20,14 +20,14 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerBlockEntity> {
+public class BreezeFreezerRenderer extends SmartBlockEntityRenderer<BreezeFreezerBlockEntity> {
 
     private static final float PI = (float) Math.PI;
-    public BlazeFreezerRenderer(BlockEntityRendererProvider.Context context) {
+    public BreezeFreezerRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
     }
     @Override
-    protected void renderSafe(BlazeFreezerBlockEntity be, float partialTicks, PoseStack ps, MultiBufferSource bufferSource, int light, int overlay) {
+    protected void renderSafe(BreezeFreezerBlockEntity be, float partialTicks, PoseStack ps, MultiBufferSource bufferSource, int light, int overlay) {
         super.renderSafe(be, partialTicks, ps, bufferSource, light, overlay);
         float horizontalAngle = AngleHelper.rad(be.headAngle.getValue(partialTicks));
         float animation = be.headAnimation.getValue(partialTicks) * .175f;
@@ -35,23 +35,23 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
         ps.pushPose();
 
 //        renderItem(be, partialTicks, animation, ps, bufferSource);
-        renderBlaze(be, horizontalAngle, animation, ps, bufferSource);
+        renderBreeze(be, horizontalAngle, animation, ps, bufferSource);
 //        renderBook(be, partialTicks, horizontalAngle, ps, bufferSource);
 
         ps.popPose();
     }
 
-    protected void renderBlaze(BlazeFreezerBlockEntity be,
+    protected void renderBreeze(BreezeFreezerBlockEntity be,
                                float horizontalAngle, float animation,
                                PoseStack ps, MultiBufferSource buffer) {
         BlockState blockState = be.getBlockState();
-        BlazeFreezerBlock.FreezingLevel heatLevel = blockState.getValue(BlazeFreezerBlock.FREEZE_LEVEL);
+        BreezeFreezerBlock.FreezingLevel heatLevel = blockState.getValue(BreezeFreezerBlock.FREEZE_LEVEL);
 //        boolean smouldering = heatLevel == HeatLevel.SMOULDERING;
 //        boolean active = be.processingTicks > 0 && be.processingTicks < 200;
         boolean blockAbove = animation > 0.125f;
         float time = AnimationTickHolder.getRenderTime(be.getLevel());
         float renderTick = time + (be.hashCode() % 13) * 16f;
-        float offsetMult = heatLevel.isAtLeast(BlazeFreezerBlock.FreezingLevel.NONE) ? 64 : 16;
+        float offsetMult = heatLevel.isAtLeast(BreezeFreezerBlock.FreezingLevel.NONE) ? 64 : 16;
         float offset = Mth.sin((float) ((renderTick / 16f) % (2 * Math.PI))) / offsetMult;
         float offset1 = Mth.sin((float) ((renderTick / 16f + Math.PI) % (2 * Math.PI))) / offsetMult;
         float offset2 = Mth.sin((float) ((renderTick / 16f + Math.PI / 2) % (2 * Math.PI))) / offsetMult;
@@ -126,23 +126,23 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
 //            default -> AllPartialModels.BLAZE_INERT;
 //        };
 
-//        PartialModel blazeModel = IAPartialModels.BLAZE_FREEZER_FREEZING;
-        PartialModel blazeModel;
-        BlazeFreezerBlock.FreezingLevel freezingLevel = BlazeFreezerBlock.getFreezeLevel(be.getBlockState());
-        if (freezingLevel.equals(BlazeFreezerBlock.FreezingLevel.NONE)) {
-            blazeModel = IAPartialModels.BLAZE_FREEZER_INERT_HEAD;
+//        PartialModel breezeModel = IAPartialModels.BLAZE_FREEZER_FREEZING;
+        PartialModel breezeModel;
+        BreezeFreezerBlock.FreezingLevel freezingLevel = BreezeFreezerBlock.getFreezeLevel(be.getBlockState());
+        if (freezingLevel.equals(BreezeFreezerBlock.FreezingLevel.NONE)) {
+            breezeModel = IAPartialModels.BLAZE_FREEZER_INERT_HEAD;
         } else {
-            blazeModel = IAPartialModels.BLAZE_FREEZER_IDLE_HEAD;
+            breezeModel = IAPartialModels.BLAZE_FREEZER_IDLE_HEAD;
         }
-//        PartialModel blazeModel = AllPartialModels.BLAZE_SUPER_ACTIVE;
+//        PartialModel breezeModel = AllPartialModels.BLAZE_SUPER_ACTIVE;
 
 
-        SuperByteBuffer blazeBuffer = CachedBufferer.partial(blazeModel, blockState);
-        blazeBuffer.translate(0, headY, 0);
-        draw(blazeBuffer, horizontalAngle, ps, solid);
+        SuperByteBuffer breezeBuffer = CachedBufferer.partial(breezeModel, blockState);
+        breezeBuffer.translate(0, headY, 0);
+        draw(breezeBuffer, horizontalAngle, ps, solid);
 
         if (be.goggles) {
-            PartialModel gogglesModel = blazeModel == AllPartialModels.BLAZE_INERT
+            PartialModel gogglesModel = breezeModel == AllPartialModels.BLAZE_INERT
                     ? AllPartialModels.BLAZE_GOGGLES_SMALL : AllPartialModels.BLAZE_GOGGLES;
 
             SuperByteBuffer gogglesBuffer = CachedBufferer.partial(gogglesModel, blockState);
@@ -151,7 +151,7 @@ public class BlazeFreezerRenderer extends SmartBlockEntityRenderer<BlazeFreezerB
         }
 
 
-        if (freezingLevel.equals(BlazeFreezerBlock.FreezingLevel.FREEZING)) {
+        if (freezingLevel.equals(BreezeFreezerBlock.FreezingLevel.FREEZING)) {
             PartialModel rodsBig = IAPartialModels.BLAZE_FREEZER_RODS_BIG;
             PartialModel rodsSmall = IAPartialModels.BLAZE_FREEZER_RODS_SMALL;
 

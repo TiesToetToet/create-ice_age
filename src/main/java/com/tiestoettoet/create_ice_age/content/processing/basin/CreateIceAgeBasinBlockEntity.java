@@ -1,7 +1,6 @@
 package com.tiestoettoet.create_ice_age.content.processing.basin;
 
 import com.simibubi.create.AllParticleTypes;
-import com.simibubi.create.AllTags;
 import com.simibubi.create.content.fluids.FluidFX;
 import com.simibubi.create.content.fluids.particle.FluidParticleData;
 import com.simibubi.create.content.processing.basin.BasinBlock;
@@ -14,8 +13,7 @@ import com.simibubi.create.foundation.blockEntity.behaviour.filtering.FilteringB
 import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.inventory.InvManipulationBehaviour;
 import com.simibubi.create.foundation.item.SmartInventory;
-import com.simibubi.create.foundation.utility.BlockHelper;
-import com.tiestoettoet.create_ice_age.content.processing.super_freezer.blaze_freezer.BlazeFreezerBlock;
+import com.tiestoettoet.create_ice_age.content.processing.super_freezer.breeze_freezer.BreezeFreezerBlock;
 import net.createmod.catnip.animation.AnimationTickHolder;
 import net.createmod.catnip.animation.LerpedFloat;
 import net.createmod.catnip.data.Couple;
@@ -42,7 +40,7 @@ import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.items.wrapper.CombinedInvWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.tiestoettoet.create_ice_age.content.processing.super_freezer.blaze_freezer.BlazeFreezerBlock.FreezingLevel;
+import com.tiestoettoet.create_ice_age.content.processing.super_freezer.breeze_freezer.BreezeFreezerBlock.FreezingLevel;
 
 import java.util.*;
 
@@ -239,8 +237,8 @@ public class CreateIceAgeBasinBlockEntity extends BasinBlockEntity {
     }
 
     public static FreezingLevel getFreezeLevelOf(BlockState state) {
-        if (state.hasProperty(BlazeFreezerBlock.FREEZE_LEVEL))
-            return state.getValue(BlazeFreezerBlock.FREEZE_LEVEL);
+        if (state.hasProperty(BreezeFreezerBlock.FREEZE_LEVEL))
+            return state.getValue(BreezeFreezerBlock.FREEZE_LEVEL);
         return FreezingLevel.NONE;
     }
 

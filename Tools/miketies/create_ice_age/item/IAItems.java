@@ -1,7 +1,7 @@
 package com.miketies.create_ice_age.item;
 
 import com.miketies.create_ice_age.CreateIceAge;
-import com.miketies.create_ice_age.super_freezer.blaze_freezer.BlazeFreezerBlockItem;
+import com.miketies.create_ice_age.super_freezer.breeze_freezer.BreezeFreezerBlockItem;
 import com.miketies.create_ice_age.fluid.IAFluids;
 import com.miketies.create_ice_age.super_freezer.lid.BasinFreezerLidBlockItem;
 import com.simibubi.create.AllTags;
@@ -30,9 +30,9 @@ public class IAItems {
                     .tag(AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
                     .register();
 
-    public static final ItemEntry<BlazeFreezerBlockItem> BLAZE_FREEZER =
-            ICE_AGE_REGISTRATE.item("blaze_freezer", BlazeFreezerBlockItem::new)
-                .model(AssetLookup.customBlockItemModel("blaze_freezer"))
+    public static final ItemEntry<BreezeFreezerBlockItem> BLAZE_FREEZER =
+            ICE_AGE_REGISTRATE.item("breeze_freezer", BreezeFreezerBlockItem::new)
+                .model(AssetLookup.customBlockItemModel("breeze_freezer"))
                 .register();
 
     public static final ItemEntry<BasinFreezerLidBlockItem> BLAZE_FREEZER_LID =

@@ -1,13 +1,13 @@
 package com.tiestoettoet.create_ice_age.api.data.recipe;
 
 import com.tiestoettoet.create_ice_age.AllRecipeTypes;
-import com.tiestoettoet.create_ice_age.content.processing.super_freezer.FreezingLidRecipe;
+import com.tiestoettoet.create_ice_age.content.processing.super_freezer.FreezingMixingRecipe;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 
 import java.util.concurrent.CompletableFuture;
 
-public abstract class FreezingMixingRecipeGen extends CreateIceAgeStandardProcessingRecipeGen<FreezingLidRecipe> {
+public abstract class FreezingMixingRecipeGen extends CreateIceAgeStandardProcessingRecipeGen<FreezingMixingRecipe> {
 
     public FreezingMixingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, String defaultNamespace) {
         super(output, registries, defaultNamespace);
@@ -15,6 +15,6 @@ public abstract class FreezingMixingRecipeGen extends CreateIceAgeStandardProces
 
     @Override
     protected AllRecipeTypes getRecipeType() {
-        return AllRecipeTypes.FREEZING_LID;
+        return AllRecipeTypes.FREEZING_MIXING;
     }
 }

@@ -36,7 +36,7 @@ public class CreateIceAgeRecipeProvider extends RecipeProvider {
     }
 
     public static void registerAllProcessing(DataGenerator gen, PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        CUSTOM_GENERATORS.add(new CreateIceAgeFreezingLidRecipeGen(output, registries));
+        CUSTOM_GENERATORS.add(new CreateIceAgeFreezingMixingRecipeGen(output, registries));
         GENERATORS.add(new CreateIceAgeFillingRecipeGen(output, registries));
 
         gen.addProvider(true, new DataProvider() {

@@ -1,0 +1,76 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:survives_explosion"
+            },
+            {
+              "block": "create_ice_age:breeze_freezer",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "breeze": "none"
+              }
+            }
+          ],
+          "name": "create:empty_blaze_burner"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:survives_explosion"
+            },
+            {
+              "block": "create_ice_age:breeze_freezer",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "breeze": "cooling"
+              }
+            }
+          ],
+          "name": "create_ice_age:breeze_freezer"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:survives_explosion"
+            },
+            {
+              "block": "create_ice_age:breeze_freezer",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "breeze": "freezing"
+              }
+            }
+          ],
+          "name": "create_ice_age:breeze_freezer"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:survives_explosion"
+            },
+            {
+              "block": "create_ice_age:breeze_freezer",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "breeze": "super_freezing"
+              }
+            }
+          ],
+          "name": "create_ice_age:breeze_freezer"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "create_ice_age:blocks/breeze_freezer"
+}

@@ -5,7 +5,7 @@ import com.simibubi.create.AllSpriteShifts;
 
 public class IASpriteShifts extends AllSpriteShifts {
     public static final IASpriteShiftEntry FREEZER_FLAME =
-        get("block/blaze_freezer_flame", "block/blaze_freezer_flame_scroll");
+        get("block/breeze_freezer_flame", "block/breeze_freezer_flame_scroll");
 
     private static IASpriteShiftEntry get(String originalLocation, String targetLocation) {
         CreateIceAge.LOGGER.info("IASpriteShifts.get: originalLocation = " + originalLocation + ", targetLocation = " + targetLocation);

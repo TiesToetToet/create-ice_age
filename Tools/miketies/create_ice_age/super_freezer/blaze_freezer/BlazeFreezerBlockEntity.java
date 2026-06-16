@@ -1,4 +1,4 @@
-package com.miketies.create_ice_age.super_freezer.blaze_freezer;
+package com.miketies.create_ice_age.super_freezer.breeze_freezer;
 
 import com.miketies.create_ice_age.CreateIceAge;
 import com.simibubi.create.AllBlocks;
@@ -20,19 +20,19 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 
-public class BlazeFreezerBlockEntity extends SmartBlockEntity {
+public class BreezeFreezerBlockEntity extends SmartBlockEntity {
     public static final int MAX_FREEZE_TIME = 10000;
     public static final int INSERTION_THRESHOLD = 500;
     protected int remainingFreezeTime;
     LerpedFloat headAnimation;
     LerpedFloat headAngle;
     boolean goggles;
-    public BlazeFreezerBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+    public BreezeFreezerBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         headAnimation = LerpedFloat.linear();
         headAngle = LerpedFloat.angular();
         headAngle.startWithValue((AngleHelper
-                .horizontalAngle(state.getOptionalValue(BlazeFreezerBlock.FACING)
+                .horizontalAngle(state.getOptionalValue(BreezeFreezerBlock.FACING)
                         .orElse(Direction.SOUTH)) + 180) % 360
         );
         goggles = false;
@@ -47,10 +47,10 @@ public class BlazeFreezerBlockEntity extends SmartBlockEntity {
 
         if (remainingFreezeTime > 0) {
             remainingFreezeTime--;
-            level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlazeFreezerBlock.FREEZE_LEVEL, BlazeFreezerBlock.FreezingLevel.FREEZING));
+            level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BreezeFreezerBlock.FREEZE_LEVEL, BreezeFreezerBlock.FreezingLevel.FREEZING));
             // TODO: random idea: Freeze nearby water
         } else {
-            level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlazeFreezerBlock.FREEZE_LEVEL, BlazeFreezerBlock.FreezingLevel.NONE));
+            level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BreezeFreezerBlock.FREEZE_LEVEL, BreezeFreezerBlock.FreezingLevel.NONE));
         }
     }
 
@@ -78,7 +78,7 @@ public class BlazeFreezerBlockEntity extends SmartBlockEntity {
             headAngle.chase(target, .25f, LerpedFloat.Chaser.exp(5));
             headAngle.tickChaser();
         } else {
-            headAngle.chase((AngleHelper.horizontalAngle(getBlockState().getOptionalValue(BlazeFreezerBlock.FACING)
+            headAngle.chase((AngleHelper.horizontalAngle(getBlockState().getOptionalValue(BreezeFreezerBlock.FACING)
                     .orElse(Direction.SOUTH)) + 180) % 360, .125f, LerpedFloat.Chaser.EXP);
             headAngle.tickChaser();
         }
@@ -128,7 +128,7 @@ public class BlazeFreezerBlockEntity extends SmartBlockEntity {
 
     @Override
     public String toString() {
-        return "BlazeFreezerBlockEntity{" +
+        return "BreezeFreezerBlockEntity{" +
                 "remainingFreezeTime=" + remainingFreezeTime +
                 ", headAnimation=" + headAnimation +
                 ", headAngle=" + headAngle +

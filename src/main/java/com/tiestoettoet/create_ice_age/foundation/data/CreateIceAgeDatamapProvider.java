@@ -1,7 +1,7 @@
 package com.tiestoettoet.create_ice_age.foundation.data;
 
 import com.simibubi.create.foundation.block.CopperRegistries;
-import com.tiestoettoet.create_ice_age.api.data.datamaps.BlazeFreezerFuel;
+import com.tiestoettoet.create_ice_age.api.data.datamaps.BreezeFreezerFuel;
 import com.tiestoettoet.create_ice_age.api.registry.CreateIceAgeDataMaps;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -32,25 +32,25 @@ public class CreateIceAgeDatamapProvider extends DataMapProvider {
         var fuels = builder(CreateIceAgeDataMaps.REGULAR_FREEZE_FUELS);
         fuels.add(
                 Items.SNOWBALL.builtInRegistryHolder(),
-                new BlazeFreezerFuel(200),
+                new BreezeFreezerFuel(200),
                 false
         );
 
         fuels.add(
                 Items.ICE.builtInRegistryHolder(),
-                new BlazeFreezerFuel(800),
+                new BreezeFreezerFuel(800),
                 false
         );
 
         fuels.add(
                 Items.PACKED_ICE.builtInRegistryHolder(),
-                new BlazeFreezerFuel(1600),
+                new BreezeFreezerFuel(1600),
                 false
         );
 
         fuels.add(
                 Items.BLUE_ICE.builtInRegistryHolder(),
-                new BlazeFreezerFuel(3200),
+                new BreezeFreezerFuel(3200),
                 false
         );
     }

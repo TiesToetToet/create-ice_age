@@ -29,7 +29,7 @@ import java.util.List;
 
 public class SuperFreezingCategory extends CreateRecipeCategory<BasinRecipe> {
     private final SuperFreezingElement SuperFreezingElement = new SuperFreezingElement();
-    private final AnimatedBlazeFreezer freezer = new AnimatedBlazeFreezer();
+    private final AnimatedBreezeFreezer freezer = new AnimatedBreezeFreezer();
     public SuperFreezingCategory(Info<BasinRecipe> info) {
         super(info);
     }

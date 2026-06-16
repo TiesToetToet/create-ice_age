@@ -5,8 +5,8 @@ import net.createmod.catnip.render.SpriteShifter;
 
 public class AllSpriteShifts {
     public static final SpriteShiftEntry FREEZER_FLAME =
-            get("block/blaze_freezer_flame", "block/blaze_freezer_flame_scroll"),
-            SUPER_FREEZER_FLAME = get("block/blaze_freezer_flame", "block/blaze_freezer_flame_superfreeze_scroll");
+            get("block/breeze_freezer_flame", "block/breeze_freezer_flame_scroll"),
+            SUPER_FREEZER_FLAME = get("block/breeze_freezer_flame", "block/breeze_freezer_flame_superfreeze_scroll");
 
     private static SpriteShiftEntry get(String originalLocation, String targetLocation) {
         return SpriteShifter.get(CreateIceAge.asResource(originalLocation), CreateIceAge.asResource(targetLocation));

@@ -2,11 +2,10 @@ package com.tiestoettoet.create_ice_age;
 
 import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.foundation.data.AssetLookup;
-import com.simibubi.create.foundation.data.BlockStateGen;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
-import com.tiestoettoet.create_ice_age.content.processing.super_freezer.blaze_freezer.BlazeFreezerBlock;
-import com.tiestoettoet.create_ice_age.content.processing.super_freezer.blaze_freezer.BlazeFreezerBlockItem;
+import com.tiestoettoet.create_ice_age.content.processing.super_freezer.breeze_freezer.BreezeFreezerBlock;
+import com.tiestoettoet.create_ice_age.content.processing.super_freezer.breeze_freezer.BreezeFreezerBlockItem;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.material.MapColor;
@@ -21,16 +20,16 @@ public class AllBlocks {
         REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
     }
 
-    public static final BlockEntry<BlazeFreezerBlock> BLAZE_FREEZER = REGISTRATE
-            .block("blaze_freezer", BlazeFreezerBlock::new)
+    public static final BlockEntry<BreezeFreezerBlock> BREEZE_FREEZER = REGISTRATE
+            .block("breeze_freezer", BreezeFreezerBlock::new)
             .initialProperties(SharedProperties::softMetal)
             .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
             .transform(pickaxeOnly())
             .addLayer(() -> RenderType::cutoutMipped)
-            .loot((lt, block) -> lt.add(block, BlazeFreezerBlock.buildLootTable()))
+            .loot((lt, block) -> lt.add(block, BreezeFreezerBlock.buildLootTable()))
             .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-            .item(BlazeFreezerBlockItem::withBlaze)
-            .model(AssetLookup.customBlockItemModel("blaze_freezer", "block_with_blaze"))
+            .item(BreezeFreezerBlockItem::withBreeze)
+            .model(AssetLookup.customBlockItemModel("breeze_freezer", "block_with_breeze"))
             .build()
             .register();
 

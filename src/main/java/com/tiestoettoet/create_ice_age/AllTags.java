@@ -72,7 +72,7 @@ public class AllTags {
     }
 
     public enum AllEntityTags {
-        BLAZE_FREEZER_CAPTURABLE;
+        BREEZE_FREEZER_CAPTURABLE;
 
         public final TagKey<EntityType<?>> tag;
 

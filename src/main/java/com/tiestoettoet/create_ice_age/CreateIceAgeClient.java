@@ -5,8 +5,10 @@ import com.simibubi.create.compat.ftb.FTBIntegration;
 import com.simibubi.create.compat.sodium.SodiumCompat;
 import com.simibubi.create.foundation.render.AllInstanceTypes;
 //import com.tiestoettoet.create_ice_age.client.AllFluidClientExtensions;
+import com.tiestoettoet.create_ice_age.foundation.ponder.CreateIceAgePonderPlugin;
 import net.createmod.catnip.render.CachedBuffers;
 import net.createmod.catnip.render.SuperByteBufferCache;
+import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -42,6 +44,7 @@ public class CreateIceAgeClient {
         System.out.println("Create Ice Age client setup complete.");
         AllPartialModels.init();
 //        AllSpriteShifts.init();
+        PonderIndex.addPlugin(new CreateIceAgePonderPlugin());
 
     }
 }

@@ -1,10 +1,10 @@
 package com.tiestoettoet.create_ice_age.content.processing.basin;
 
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
-import com.tiestoettoet.create_ice_age.content.processing.super_freezer.blaze_freezer.BlazeFreezerBlock;
+import com.tiestoettoet.create_ice_age.content.processing.super_freezer.breeze_freezer.BreezeFreezerBlock;
 
 public interface CreateIceAgeBasinBlockEntityExtension {
-    BlazeFreezerBlock.FreezingLevel iceAge$getFreezeLevel();
+    BreezeFreezerBlock.FreezingLevel iceAge$getFreezeLevel();
 
     BlazeBurnerBlock.HeatLevel iceAge$getHeatLevel();
 }

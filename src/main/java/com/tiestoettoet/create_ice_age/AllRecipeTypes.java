@@ -3,7 +3,7 @@ package com.tiestoettoet.create_ice_age;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import com.tiestoettoet.create_ice_age.content.kinetics.fan.processing.FreezingRecipe;
 import com.tiestoettoet.create_ice_age.content.processing.recipe.CreateIceAgeStandardProcessingRecipe;
-import com.tiestoettoet.create_ice_age.content.processing.super_freezer.FreezingLidRecipe;
+import com.tiestoettoet.create_ice_age.content.processing.super_freezer.FreezingMixingRecipe;
 import net.createmod.catnip.lang.Lang;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -21,7 +21,7 @@ import java.util.function.Supplier;
 
 public enum AllRecipeTypes implements IRecipeTypeInfo, StringRepresentable {
     FAN_FREEZING(FreezingRecipe::new),
-    FREEZING_LID(FreezingLidRecipe::new);
+    FREEZING_MIXING(FreezingMixingRecipe::new);
 
     public final ResourceLocation id;
     private final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> serializerObject;

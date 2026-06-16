@@ -8,11 +8,9 @@ import com.simibubi.create.foundation.blockEntity.behaviour.filtering.FilteringB
 import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
 import com.simibubi.create.foundation.recipe.DummyCraftingContainer;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
-import com.tiestoettoet.create_ice_age.CreateIceAge;
 import com.tiestoettoet.create_ice_age.content.processing.recipe.CreateIceAgeProcessingRecipeParams;
 import com.tiestoettoet.create_ice_age.content.processing.recipe.CreateIceAgeStandardProcessingRecipe;
-import com.tiestoettoet.create_ice_age.content.processing.super_freezer.blaze_freezer.BlazeFreezerBlock;
-import com.tiestoettoet.create_ice_age.content.processing.super_freezer.blaze_freezer.BlazeFreezerBlock.FreezingLevel;
+import com.tiestoettoet.create_ice_age.content.processing.super_freezer.breeze_freezer.BreezeFreezerBlock;
 import net.createmod.catnip.data.Iterate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
@@ -68,10 +66,10 @@ public class CreateIceAgeBasinRecipe extends CreateIceAgeStandardProcessingRecip
             return false;
 
         BlazeBurnerBlock.HeatLevel heat = ((CreateIceAgeBasinBlockEntityExtension) basin).iceAge$getHeatLevel();
-        BlazeFreezerBlock.FreezingLevel freeze = ((CreateIceAgeBasinBlockEntityExtension) basin).iceAge$getFreezeLevel();
+        BreezeFreezerBlock.FreezingLevel freeze = ((CreateIceAgeBasinBlockEntityExtension) basin).iceAge$getFreezeLevel();
 
         if (isBasinRecipeFreeze && !((CreateIceAgeBasinRecipe) recipe).getRequiredFreeze()
-                .testBlazeFreezer(freeze))
+                .testBreezeFreezer(freeze))
             return false;
         if (isBasinRecipe && !((BasinRecipe) recipe).getRequiredHeat()
                 .testBlazeBurner(heat))

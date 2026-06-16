@@ -16,7 +16,7 @@ import com.simibubi.create.infrastructure.config.AllConfigs;
 //import com.tiestoettoet.create_ice_age.content.processing.basin.CreateIceAgeBasinBlockEntity;
 import com.tiestoettoet.create_ice_age.content.processing.basin.CreateIceAgeBasinRecipe;
 import com.tiestoettoet.create_ice_age.content.processing.recipe.CreateIceAgeStandardProcessingRecipe;
-import com.tiestoettoet.create_ice_age.content.processing.super_freezer.blaze_freezer.BlazeFreezerBlockEntity;
+import com.tiestoettoet.create_ice_age.content.processing.super_freezer.breeze_freezer.BreezeFreezerBlockEntity;
 import net.createmod.catnip.data.Couple;
 import net.createmod.catnip.math.VecHelper;
 import net.minecraft.core.BlockPos;
@@ -232,8 +232,8 @@ public class MechanicalMixerBlockEntityMixin extends BasinOperatingBlockEntity {
 //        if (this.getLevel() == null || this.getLevel().isClientSide) return true;
 //        Optional<CreateIceAgeBasinBlockEntity> basin = this.getBasin2();
 //        // get block below basin
-//        var blazeFreezer = level.getBlockEntity(worldPosition.below().below());
-//        if (blazeFreezer instanceof BlazeFreezerBlockEntity bf) {
+//        var breezeFreezer = level.getBlockEntity(worldPosition.below().below());
+//        if (breezeFreezer instanceof BreezeFreezerBlockEntity bf) {
 //            if (bf.getRemainingFreezeTime() <= 0) {
 //                return false;
 //            }
@@ -259,7 +259,7 @@ public class MechanicalMixerBlockEntityMixin extends BasinOperatingBlockEntity {
                 .size() > 1
                 && !MechanicalPressBlockEntity.canCompress(r)) && !AllRecipeTypes.shouldIgnoreInAutomation(recipe)
                 || r.getType() == AllRecipeTypes.MIXING.getType())
-                || r.getType() == com.tiestoettoet.create_ice_age.AllRecipeTypes.FREEZING_LID.getType()
+                || r.getType() == com.tiestoettoet.create_ice_age.AllRecipeTypes.FREEZING_MIXING.getType()
                 ;
     }
 

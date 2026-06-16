@@ -7,7 +7,7 @@ import com.tiestoettoet.create_ice_age.AllBlocks;
 import com.tiestoettoet.create_ice_age.AllItems;
 import com.tiestoettoet.create_ice_age.content.processing.basin.CreateIceAgeBasinRecipe;
 import com.tiestoettoet.create_ice_age.content.processing.recipe.FreezeCondition;
-import com.tiestoettoet.create_ice_age.content.processing.super_freezer.blaze_freezer.BlazeFreezerBlock;
+import com.tiestoettoet.create_ice_age.content.processing.super_freezer.breeze_freezer.BreezeFreezerBlock;
 import com.tiestoettoet.create_ice_age.foundation.utility.CreateIceAgeLang;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
@@ -86,12 +86,12 @@ public class CreateIceAgeBasinCategory extends CreateIceAgeRecipeCategory<Create
         }
 
         FreezeCondition requiredFreeze = recipe.getRequiredFreeze();
-        if (!requiredFreeze.testBlazeFreezer(BlazeFreezerBlock.FreezingLevel.NONE)) {
+        if (!requiredFreeze.testBreezeFreezer(BreezeFreezerBlock.FreezingLevel.NONE)) {
             builder
                     .addSlot(RecipeIngredientRole.RENDER_ONLY, 134, 81)
-                    .addItemStack(AllBlocks.BLAZE_FREEZER.asStack());
+                    .addItemStack(AllBlocks.BREEZE_FREEZER.asStack());
         }
-        if (!requiredFreeze.testBlazeFreezer(BlazeFreezerBlock.FreezingLevel.FREEZING)) {
+        if (!requiredFreeze.testBreezeFreezer(BreezeFreezerBlock.FreezingLevel.FREEZING)) {
             builder
                     .addSlot(RecipeIngredientRole.CATALYST, 153, 81)
                     .addItemStack(AllItems.ICE_CAKE.asStack());

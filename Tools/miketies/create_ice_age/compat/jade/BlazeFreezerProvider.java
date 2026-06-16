@@ -1,6 +1,6 @@
 package com.miketies.create_ice_age.compat.jade;
 
-import com.miketies.create_ice_age.super_freezer.blaze_freezer.BlazeFreezerBlockEntity;
+import com.miketies.create_ice_age.super_freezer.breeze_freezer.BreezeFreezerBlockEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -14,7 +14,7 @@ import snownee.jade.api.theme.IThemeHelper;
 import snownee.jade.api.ui.IElementHelper;
 
 //@WailaPlugin(CreateIceAge.MOD_ID)
-public enum BlazeFreezerProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
+public enum BreezeFreezerProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
     INSTANCE;
     @Override
     @OnlyIn(Dist.CLIENT)
@@ -30,7 +30,7 @@ public enum BlazeFreezerProvider implements IBlockComponentProvider, IServerData
 
     @Override
     public void appendServerData(CompoundTag compoundTag, BlockAccessor blockAccessor) {
-        BlazeFreezerBlockEntity be = (BlazeFreezerBlockEntity) blockAccessor.getBlockEntity();
+        BreezeFreezerBlockEntity be = (BreezeFreezerBlockEntity) blockAccessor.getBlockEntity();
         compoundTag.putInt("remainingFreezeTime", be.getRemainingFreezeTime());
     }
 

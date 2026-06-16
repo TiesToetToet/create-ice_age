@@ -1,7 +1,7 @@
 package com.tiestoettoet.create_ice_age.content.processing.recipe;
 
 import com.mojang.serialization.Codec;
-import com.tiestoettoet.create_ice_age.content.processing.super_freezer.blaze_freezer.BlazeFreezerBlock;
+import com.tiestoettoet.create_ice_age.content.processing.super_freezer.breeze_freezer.BreezeFreezerBlock;
 import io.netty.buffer.ByteBuf;
 import net.createmod.catnip.codecs.stream.CatnipStreamCodecBuilders;
 import net.createmod.catnip.lang.Lang;
@@ -19,20 +19,20 @@ public enum FreezeCondition implements StringRepresentable {
 
     FreezeCondition(int color) { this.color = color; }
 
-    public boolean testBlazeFreezer(BlazeFreezerBlock.FreezingLevel level) {
+    public boolean testBreezeFreezer(BreezeFreezerBlock.FreezingLevel level) {
         if (this == SUPER_FREEZING)
-            return level == BlazeFreezerBlock.FreezingLevel.SUPER_FREEZING;
+            return level == BreezeFreezerBlock.FreezingLevel.SUPER_FREEZING;
         if (this == FREEZING)
-            return level == BlazeFreezerBlock.FreezingLevel.FREEZING;
+            return level == BreezeFreezerBlock.FreezingLevel.FREEZING;
         return true;
     }
 
-    public BlazeFreezerBlock.FreezingLevel visualizeAsBlazeFreezer() {
+    public BreezeFreezerBlock.FreezingLevel visualizeAsBreezeFreezer() {
         if (this == SUPER_FREEZING)
-            return BlazeFreezerBlock.FreezingLevel.SUPER_FREEZING;
+            return BreezeFreezerBlock.FreezingLevel.SUPER_FREEZING;
         if (this == FREEZING)
-            return BlazeFreezerBlock.FreezingLevel.FREEZING;
-        return BlazeFreezerBlock.FreezingLevel.NONE;
+            return BreezeFreezerBlock.FreezingLevel.FREEZING;
+        return BreezeFreezerBlock.FreezingLevel.NONE;
     }
 
     @Override

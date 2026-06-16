@@ -2,8 +2,8 @@ package com.miketies.create_ice_age.super_freezer.lid;
 
 import com.miketies.create_ice_age.CreateIceAge;
 import com.miketies.create_ice_age.IARecipeTypes;
-import com.miketies.create_ice_age.super_freezer.blaze_freezer.BlazeFreezerBlock;
-import com.miketies.create_ice_age.super_freezer.blaze_freezer.BlazeFreezerBlockEntity;
+import com.miketies.create_ice_age.super_freezer.breeze_freezer.BreezeFreezerBlock;
+import com.miketies.create_ice_age.super_freezer.breeze_freezer.BreezeFreezerBlockEntity;
 import com.simibubi.create.content.processing.basin.BasinBlockEntity;
 import com.simibubi.create.content.processing.basin.BasinOperatingBlockEntity;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
@@ -103,8 +103,8 @@ public class BasinFreezerLidBlockEntity extends BasinOperatingBlockEntity {
         if (this.getLevel() == null || this.getLevel().isClientSide) return true;
         Optional<BasinBlockEntity> basin = this.getBasin();
         // get block below basin
-        var blazeFreezer = level.getBlockEntity(worldPosition.below().below());
-        if (blazeFreezer instanceof BlazeFreezerBlockEntity bf) {
+        var breezeFreezer = level.getBlockEntity(worldPosition.below().below());
+        if (breezeFreezer instanceof BreezeFreezerBlockEntity bf) {
             if (bf.getRemainingFreezeTime() <= 0) {
                 return false;
             }

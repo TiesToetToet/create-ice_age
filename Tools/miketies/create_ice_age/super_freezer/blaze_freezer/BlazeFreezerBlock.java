@@ -1,4 +1,4 @@
-package com.miketies.create_ice_age.super_freezer.blaze_freezer;
+package com.miketies.create_ice_age.super_freezer.breeze_freezer;
 
 import com.miketies.create_ice_age.CreateIceAge;
 import com.miketies.create_ice_age.block.IABlockEntities;
@@ -35,11 +35,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE<BlazeFreezerBlockEntity>, IWrenchable {
+public class BreezeFreezerBlock extends HorizontalDirectionalBlock implements IBE<BreezeFreezerBlockEntity>, IWrenchable {
 //    public static final EnumProperty<BlazeBurnerBlock.HeatLevel> HEAT_LEVEL = EnumProperty.create("blaze", BlazeBurnerBlock.HeatLevel.class);
     public static final EnumProperty<FreezingLevel> FREEZE_LEVEL = EnumProperty.create("blaze", FreezingLevel.class);
 //    public static final EnumProperty<BlazeBurnerBlock.HeatLevel> HEAT_LEVEL = EnumProperty.create("blaze", BlazeBurnerBlock.HeatLevel.class);
-    public BlazeFreezerBlock(Properties pProperties) {
+    public BreezeFreezerBlock(Properties pProperties) {
         super(pProperties);
         registerDefaultState(defaultBlockState().setValue(FREEZE_LEVEL, FreezingLevel.NONE));
     }
@@ -89,8 +89,8 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
             if (heldItem.getItem() instanceof FreezerItem freezerItem) {
                 int freezeTime = freezerItem.getFreezeTime();
 //                CreateIceAge.LOGGER.info("Freeze time: " + freezeTime);
-                if (level.getBlockEntity(pos) instanceof BlazeFreezerBlockEntity tileEntity) {
-                    if (freezeTime > 0 && tileEntity.getRemainingFreezeTime() + freezeTime <= BlazeFreezerBlockEntity.MAX_FREEZE_TIME) {
+                if (level.getBlockEntity(pos) instanceof BreezeFreezerBlockEntity tileEntity) {
+                    if (freezeTime > 0 && tileEntity.getRemainingFreezeTime() + freezeTime <= BreezeFreezerBlockEntity.MAX_FREEZE_TIME) {
                         if (!level.isClientSide()) {
                             if (consume) {
                                 heldItem.shrink(1);
@@ -113,12 +113,12 @@ public class BlazeFreezerBlock extends HorizontalDirectionalBlock implements IBE
     }
 
     @Override
-    public Class<BlazeFreezerBlockEntity> getBlockEntityClass() {
-        return BlazeFreezerBlockEntity.class;
+    public Class<BreezeFreezerBlockEntity> getBlockEntityClass() {
+        return BreezeFreezerBlockEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends BlazeFreezerBlockEntity> getBlockEntityType() {
+    public BlockEntityType<? extends BreezeFreezerBlockEntity> getBlockEntityType() {
         return IABlockEntities.BLAZE_FREEZER.get();
     }
 

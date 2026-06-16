@@ -20,7 +20,7 @@ public class CreateIceAgeRegistrateTags {
     private static void genEntityTags(RegistrateTagsProvider<EntityType<?>> provIn) {
         TagGen.CreateTagsProvider<EntityType<?>> prov = new TagGen.CreateTagsProvider<>(provIn, EntityType::builtInRegistryHolder);
 
-        prov.tag(AllTags.AllEntityTags.BLAZE_FREEZER_CAPTURABLE.tag)
+        prov.tag(AllTags.AllEntityTags.BREEZE_FREEZER_CAPTURABLE.tag)
                 .add(EntityType.BREEZE);
     }
 }

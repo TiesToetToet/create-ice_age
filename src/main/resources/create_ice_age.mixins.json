@@ -5,6 +5,7 @@
   "mixins": [
     "BasinBlockEntityMixin",
     "BasinOperatingBlockEntityMixin",
+    "BlazeBurnerBlockItemMixin",
     "MechanicalMixerBlockEntityMixin"
   ],
   "client": [],

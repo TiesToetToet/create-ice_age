@@ -3,7 +3,7 @@ package com.miketies.create_ice_age.compat.jei;
 import com.jozufozu.flywheel.core.PartialModel;
 import com.miketies.create_ice_age.IAPartialModels;
 import com.miketies.create_ice_age.block.IABlocks;
-import com.miketies.create_ice_age.super_freezer.blaze_freezer.BlazeFreezerBlock;
+import com.miketies.create_ice_age.super_freezer.breeze_freezer.BreezeFreezerBlock;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -22,10 +22,10 @@ import net.minecraft.util.Mth;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import net.minecraft.world.level.block.Blocks;
 
-public class AnimatedBlazeFreezer extends AnimatedKinetics {
-    private BlazeFreezerBlock.FreezingLevel freezingLevel;
+public class AnimatedBreezeFreezer extends AnimatedKinetics {
+    private BreezeFreezerBlock.FreezingLevel freezingLevel;
 
-    public AnimatedBlazeFreezer withFreeze(BlazeFreezerBlock.FreezingLevel freezingLevel) {
+    public AnimatedBreezeFreezer withFreeze(BreezeFreezerBlock.FreezingLevel freezingLevel) {
         this.freezingLevel = freezingLevel;
         return this;
     }
@@ -45,7 +45,7 @@ public class AnimatedBlazeFreezer extends AnimatedKinetics {
                 .scale(scale)
                 .render(guiGraphics);
 
-        PartialModel blaze = IAPartialModels.BLAZE_FREEZER_IDLE_HEAD;
+        PartialModel breeze = IAPartialModels.BLAZE_FREEZER_IDLE_HEAD;
         PartialModel rod2 = IAPartialModels.BLAZE_FREEZER_RODS_BIG;
 
         blockElement(blaze)

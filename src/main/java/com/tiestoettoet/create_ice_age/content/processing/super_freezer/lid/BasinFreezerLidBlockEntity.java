@@ -5,7 +5,7 @@
 //import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
 //import com.tiestoettoet.create_ice_age.AllRecipeTypes;
 //import com.tiestoettoet.create_ice_age.CreateIceAge;
-//import com.tiestoettoet.create_ice_age.content.processing.super_freezer.blaze_freezer.BlazeFreezerBlockEntity;
+//import com.tiestoettoet.create_ice_age.content.processing.super_freezer.breeze_freezer.BreezeFreezerBlockEntity;
 //import net.minecraft.core.BlockPos;
 //import net.minecraft.nbt.CompoundTag;
 //import net.minecraft.world.Container;

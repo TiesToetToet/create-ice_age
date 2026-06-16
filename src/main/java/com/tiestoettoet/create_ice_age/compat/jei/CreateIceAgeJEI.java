@@ -2,44 +2,23 @@ package com.tiestoettoet.create_ice_age.compat.jei;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllFluids;
-import com.simibubi.create.AllItems;
-import com.simibubi.create.*;
 import com.simibubi.create.compat.jei.*;
 import com.simibubi.create.compat.jei.category.*;
 import com.simibubi.create.compat.jei.ToolboxColoringRecipeMaker;
-import com.simibubi.create.compat.jei.category.CreateRecipeCategory;
 import com.simibubi.create.content.equipment.blueprint.BlueprintScreen;
-import com.simibubi.create.content.equipment.sandPaper.SandPaperPolishingRecipe;
 import com.simibubi.create.content.fluids.potion.PotionFluid;
-import com.simibubi.create.content.fluids.potion.PotionMixingRecipes;
-import com.simibubi.create.content.fluids.transfer.EmptyingRecipe;
-import com.simibubi.create.content.fluids.transfer.FillingRecipe;
-import com.simibubi.create.content.kinetics.crafter.MechanicalCraftingRecipe;
-import com.simibubi.create.content.kinetics.crusher.AbstractCrushingRecipe;
-import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
-import com.simibubi.create.content.kinetics.deployer.ItemApplicationRecipe;
-import com.simibubi.create.content.kinetics.deployer.ManualApplicationRecipe;
-import com.simibubi.create.content.kinetics.fan.processing.HauntingRecipe;
-import com.simibubi.create.content.kinetics.fan.processing.SplashingRecipe;
-import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
-import com.simibubi.create.content.kinetics.press.PressingRecipe;
-import com.simibubi.create.content.kinetics.saw.CuttingRecipe;
 import com.simibubi.create.content.logistics.factoryBoard.FactoryPanelSetItemScreen;
 import com.simibubi.create.content.logistics.filter.AbstractFilterScreen;
 import com.simibubi.create.content.logistics.redstoneRequester.RedstoneRequesterScreen;
 import com.simibubi.create.content.logistics.stockTicker.StockKeeperRequestScreen;
-import com.simibubi.create.content.processing.basin.BasinRecipe;
-import com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipe;
 import com.simibubi.create.content.redstone.link.controller.LinkedControllerScreen;
 import com.simibubi.create.content.trains.schedule.ScheduleScreen;
-import com.simibubi.create.foundation.data.recipe.LogStrippingFakeRecipes;
 import com.simibubi.create.foundation.gui.menu.AbstractSimiContainerScreen;
 import com.simibubi.create.foundation.item.ItemHelper;
-import com.simibubi.create.foundation.utility.RecipeGenericsUtil;
-import com.simibubi.create.infrastructure.config.AllConfigs;
 import com.tiestoettoet.create_ice_age.CreateIceAge;
+//import com.tiestoettoet.create_ice_age.compat.jei.category.CreateIceAgeMysteriousItemConversionCategory;
 import com.tiestoettoet.create_ice_age.compat.jei.category.CreateIceAgeRecipeCategory;
-import com.tiestoettoet.create_ice_age.compat.jei.category.FreezingLidCategory;
+import com.tiestoettoet.create_ice_age.compat.jei.category.FreezingMixingCategory;
 import com.tiestoettoet.create_ice_age.content.processing.basin.CreateIceAgeBasinRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -57,11 +36,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.crafting.*;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -77,6 +54,7 @@ public class CreateIceAgeJEI implements IModPlugin {
     private static final ResourceLocation ID = CreateIceAge.asResource("jei_plugin");
 
     private final List<CreateIceAgeRecipeCategory<?>> allCategories = new ArrayList<>();
+
     private IIngredientManager ingredientManager;
 
     public static IJeiRuntime runtime;
@@ -86,13 +64,16 @@ public class CreateIceAgeJEI implements IModPlugin {
 
         CreateIceAgeRecipeCategory<?>
 
-                freezing_lid = builder(CreateIceAgeBasinRecipe.class)
-                        .addTypedRecipes(com.tiestoettoet.create_ice_age.AllRecipeTypes.FREEZING_LID)
+                freezing_mixing = builder(CreateIceAgeBasinRecipe.class)
+                        .addTypedRecipes(com.tiestoettoet.create_ice_age.AllRecipeTypes.FREEZING_MIXING)
                         .catalyst(AllBlocks.MECHANICAL_MIXER::get)
                         .catalyst(AllBlocks.BASIN::get)
                         .doubleItemIcon(AllBlocks.MECHANICAL_MIXER.get(), AllBlocks.BASIN.get())
                         .emptyBackground(177, 103)
-                        .build("freezing_lid", FreezingLidCategory::standard);
+                        .build("freezing_mixing", FreezingMixingCategory::standard);
+
+
+
 
     }
 
@@ -116,9 +97,17 @@ public class CreateIceAgeJEI implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
         ingredientManager = registration.getIngredientManager();
 
+        MysteriousItemConversionCategory.RECIPES.add(
+                ConversionRecipe.create(
+                        com.simibubi.create.AllItems.EMPTY_BLAZE_BURNER.asStack(),
+                        com.tiestoettoet.create_ice_age.AllBlocks.BREEZE_FREEZER.asStack()
+                )
+        );
+
         allCategories.forEach(c -> c.registerRecipes(registration));
 
-        registration.addRecipes(RecipeTypes.CRAFTING, ToolboxColoringRecipeMaker.createRecipes().toList());
+        registration.addRecipes(RecipeTypes.CRAFTING,
+                ToolboxColoringRecipeMaker.createRecipes().toList());
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.miketies.create_ice_age.block;
 
 import com.miketies.create_ice_age.CreateIceAge;
-import com.miketies.create_ice_age.super_freezer.blaze_freezer.BlazeFreezerBlock;
+import com.miketies.create_ice_age.super_freezer.breeze_freezer.BreezeFreezerBlock;
 import com.miketies.create_ice_age.fluid.IAFluids;
 import com.miketies.create_ice_age.super_freezer.lid.BasinFreezerLidBlock;
 import com.simibubi.create.foundation.data.AssetLookup;
@@ -26,8 +26,8 @@ public class IABlocks {
     public static final RegistryObject<LiquidBlock> LIQUID_ICE_BLOCK = BLOCKS.register("liquid_ice_block",
             () -> new LiquidIceBlock(IAFluids.SOURCE_LIQUID_ICE, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
-    public static final BlockEntry<BlazeFreezerBlock> BLAZE_FREEZER = ICE_AGE_REGISTRATE
-            .block("blaze_freezer", BlazeFreezerBlock::new)
+    public static final BlockEntry<BreezeFreezerBlock> BLAZE_FREEZER = ICE_AGE_REGISTRATE
+            .block("breeze_freezer", BreezeFreezerBlock::new)
             .initialProperties(SharedProperties::softMetal)
             .blockstate((ctx, pov) -> pov.simpleBlock(ctx.get(), AssetLookup.standardModel(ctx, pov)))
             .register();
