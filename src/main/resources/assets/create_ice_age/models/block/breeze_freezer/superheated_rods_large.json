@@ -1,0 +1,9 @@
+{
+	"parent": "block/block",
+	"loader": "neoforge:obj",
+	"flip_v": true,
+	"model": "create_ice_age:models/block/breeze_freezer/blaze_rods_large.obj",
+	"textures": {
+		"0": "create_ice_age:block/breeze_freezer_super_active"
+	}
+}

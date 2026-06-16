@@ -1,0 +1,197 @@
+package com.miketies.create_ice_age.super_freezer.breeze_freezer;
+
+import com.jozufozu.flywheel.core.PartialModel;
+import com.miketies.create_ice_age.IAPartialModels;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.simibubi.create.AllPartialModels;
+import com.simibubi.create.AllSpriteShifts;
+import com.simibubi.create.foundation.block.render.SpriteShiftEntry;
+import com.simibubi.create.foundation.blockEntity.renderer.SmartBlockEntityRenderer;
+import com.simibubi.create.foundation.render.CachedBufferer;
+import com.simibubi.create.foundation.render.SuperByteBuffer;
+import com.simibubi.create.foundation.utility.AngleHelper;
+import com.simibubi.create.foundation.utility.AnimationTickHolder;
+import net.minecraft.client.renderer.LightTexture;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.core.Direction;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.state.BlockState;
+
+public class BreezeFreezerRenderer extends SmartBlockEntityRenderer<BreezeFreezerBlockEntity> {
+
+    private static final float PI = (float) Math.PI;
+    public BreezeFreezerRenderer(BlockEntityRendererProvider.Context context) {
+        super(context);
+    }
+    @Override
+    protected void renderSafe(BreezeFreezerBlockEntity be, float partialTicks, PoseStack ps, MultiBufferSource bufferSource, int light, int overlay) {
+        super.renderSafe(be, partialTicks, ps, bufferSource, light, overlay);
+        float horizontalAngle = AngleHelper.rad(be.headAngle.getValue(partialTicks));
+        float animation = be.headAnimation.getValue(partialTicks) * .175f;
+
+        ps.pushPose();
+
+//        renderItem(be, partialTicks, animation, ps, bufferSource);
+        renderBreeze(be, horizontalAngle, animation, ps, bufferSource);
+//        renderBook(be, partialTicks, horizontalAngle, ps, bufferSource);
+
+        ps.popPose();
+    }
+
+    protected void renderBreeze(BreezeFreezerBlockEntity be,
+                               float horizontalAngle, float animation,
+                               PoseStack ps, MultiBufferSource buffer) {
+        BlockState blockState = be.getBlockState();
+        BreezeFreezerBlock.FreezingLevel heatLevel = blockState.getValue(BreezeFreezerBlock.FREEZE_LEVEL);
+//        boolean smouldering = heatLevel == HeatLevel.SMOULDERING;
+//        boolean active = be.processingTicks > 0 && be.processingTicks < 200;
+        boolean blockAbove = animation > 0.125f;
+        float time = AnimationTickHolder.getRenderTime(be.getLevel());
+        float renderTick = time + (be.hashCode() % 13) * 16f;
+        float offsetMult = heatLevel.isAtLeast(BreezeFreezerBlock.FreezingLevel.NONE) ? 64 : 16;
+        float offset = Mth.sin((float) ((renderTick / 16f) % (2 * Math.PI))) / offsetMult;
+        float offset1 = Mth.sin((float) ((renderTick / 16f + Math.PI) % (2 * Math.PI))) / offsetMult;
+        float offset2 = Mth.sin((float) ((renderTick / 16f + Math.PI / 2) % (2 * Math.PI))) / offsetMult;
+        float headY = offset - (animation * .75f);
+        VertexConsumer solid = buffer.getBuffer(RenderType.solid());
+        VertexConsumer cutout = buffer.getBuffer(RenderType.cutoutMipped());
+        float freezeTime = be.getRemainingFreezeTime();
+        System.out.println("freezeTime: " + freezeTime);
+        System.out.println("blockAbove: " + blockAbove);
+
+        ps.pushPose();
+
+        if (freezeTime > 0 && blockAbove) {
+            SpriteShiftEntry spriteShift = AllSpriteShifts.SUPER_BURNER_FLAME;
+
+            SpriteShiftEntry spriteShift = AllSpriteShifts.FREEZER_FLAME;
+
+            CreateIceAge.LOGGER.info(
+                    "Source: {} {} {} {}",
+                    spriteShift.getOriginal().getU0(),
+                    spriteShift.getOriginal().getV0(),
+                    spriteShift.getOriginal().getU1(),
+                    spriteShift.getOriginal().getV1()
+            );
+
+            CreateIceAge.LOGGER.info(
+                    "Target: {} {} {} {}",
+                    spriteShift.getTarget().getU0(),
+                    spriteShift.getTarget().getV0(),
+                    spriteShift.getTarget().getU1(),
+                    spriteShift.getTarget().getV1()
+            );
+
+            //            IASpriteShiftEntry spriteShift = IASpriteShifts.FREEZER_FLAME;
+//            SpriteShiftEntry spriteShift = IASpriteShifts.FREEZER_FLAME;
+//            SpriteShiftEntry spriteShift2 = AllSpriteShifts.BURNER_FLAME;
+//            CreateIceAge.LOGGER.info("spriteShift: " + spriteShift.getOriginal());
+//            CreateIceAge.LOGGER.info("spriteShift: " + spriteShift.getTarget());
+//            CreateIceAge.LOGGER.info("spriteShift: " + spriteShift.getOriginalResourceLocation());
+//            CreateIceAge.LOGGER.info("spriteShift: " + spriteShift.getTargetResourceLocation());
+
+            float spriteWidth = spriteShift.getTarget()
+                    .getU1()
+                    - spriteShift.getTarget()
+                    .getU0();
+
+            float spriteHeight = spriteShift.getTarget()
+                    .getV1()
+                    - spriteShift.getTarget()
+                    .getV0();
+
+            float speed = 1 / 32f + 1 / 64f * heatLevel.ordinal();
+
+            double vScroll = speed * time;
+            vScroll = vScroll - Math.floor(vScroll);
+            vScroll = vScroll * spriteHeight / 2;
+
+            double uScroll = speed * time / 2;
+            uScroll = uScroll - Math.floor(uScroll);
+            uScroll = uScroll * spriteWidth / 2;
+
+            SuperByteBuffer flameBuffer = CachedBufferer.partial(AllPartialModels.BLAZE_BURNER_FLAME, blockState);
+            flameBuffer.shiftUVScrolling(spriteShift, (float) uScroll, (float) vScroll);
+            draw(flameBuffer, horizontalAngle, ps, cutout);
+        }
+//        ps.translate(0, .125, 0);
+
+//        boolean active = true;
+
+//            case NONE -> active ? AllPartialModels.BLAZE_SUPER_ACTIVE : AllPartialModels.BLAZE_SUPER;
+//            case FREEZING -> active ? AllPartialModels.BLAZE_ACTIVE : AllPartialModels.BLAZE_IDLE;
+//            default -> AllPartialModels.BLAZE_INERT;
+//        };
+
+//        PartialModel breezeModel = IAPartialModels.BLAZE_FREEZER_FREEZING;
+        PartialModel breezeModel;
+        BreezeFreezerBlock.FreezingLevel freezingLevel = BreezeFreezerBlock.getFreezeLevel(be.getBlockState());
+        if (freezingLevel.equals(BreezeFreezerBlock.FreezingLevel.NONE)) {
+            breezeModel = IAPartialModels.BLAZE_FREEZER_INERT_HEAD;
+        } else {
+            breezeModel = IAPartialModels.BLAZE_FREEZER_IDLE_HEAD;
+        }
+//        PartialModel breezeModel = AllPartialModels.BLAZE_SUPER_ACTIVE;
+
+
+        SuperByteBuffer breezeBuffer = CachedBufferer.partial(breezeModel, blockState);
+        breezeBuffer.translate(0, headY, 0);
+        draw(breezeBuffer, horizontalAngle, ps, solid);
+
+        if (be.goggles) {
+            PartialModel gogglesModel = breezeModel == AllPartialModels.BLAZE_INERT
+                    ? AllPartialModels.BLAZE_GOGGLES_SMALL : AllPartialModels.BLAZE_GOGGLES;
+
+            SuperByteBuffer gogglesBuffer = CachedBufferer.partial(gogglesModel, blockState);
+            gogglesBuffer.translate(0, headY + 8 / 16f, 0);
+            draw(gogglesBuffer, horizontalAngle, ps, solid);
+        }
+
+
+        if (freezingLevel.equals(BreezeFreezerBlock.FreezingLevel.FREEZING)) {
+            PartialModel rodsBig = IAPartialModels.BLAZE_FREEZER_RODS_BIG;
+            PartialModel rodsSmall = IAPartialModels.BLAZE_FREEZER_RODS_SMALL;
+
+            SuperByteBuffer rodsBufferBig = CachedBufferer.partial(rodsBig, blockState);
+            rodsBufferBig.translate(0, offset2 + animation - 3 / 16f,0)
+                    .light(LightTexture.FULL_BRIGHT)
+                    .renderInto(ps, solid);
+
+            SuperByteBuffer rodsBufferSmall = CachedBufferer.partial(rodsSmall, blockState);
+            rodsBufferSmall.translate(0, offset1 + animation + .125f, 0)
+                    .light(LightTexture.FULL_BRIGHT)
+                    .renderInto(ps, solid);
+        }
+
+//        if (!smouldering) {
+//            PartialModel rodsModel = heatLevel == HeatLevel.SEETHING
+//                    ? AllPartialModels.BLAZE_BURNER_SUPER_RODS
+//                    : AllPartialModels.BLAZE_BURNER_RODS;
+//            PartialModel rodsModel2 = heatLevel == HeatLevel.SEETHING
+//                    ? AllPartialModels.BLAZE_BURNER_SUPER_RODS_2
+//                    : AllPartialModels.BLAZE_BURNER_RODS_2;
+//            SuperByteBuffer rodsBuffer = CachedBufferer.partial(rodsModel, blockState);
+//            rodsBuffer.translate(0, offset1 + animation + .125f, 0)
+//                    .light(LightTexture.FULL_BRIGHT)
+//                    .renderInto(ps, solid);
+//
+//            SuperByteBuffer rodsBuffer2 = CachedBufferer.partial(rodsModel2, blockState);
+//            rodsBuffer2.translate(0, offset2 + animation - 3 / 16f, 0)
+//                    .light(LightTexture.FULL_BRIGHT)
+//                    .renderInto(ps, solid);
+//        }
+
+        ps.popPose();
+    }
+
+
+
+    private static void draw(SuperByteBuffer buffer, float horizontalAngle, PoseStack ms, VertexConsumer vc) {
+        buffer.rotateCentered(Direction.UP, horizontalAngle)
+                .light(LightTexture.FULL_BRIGHT)
+                .renderInto(ms, vc);
+    }
+}

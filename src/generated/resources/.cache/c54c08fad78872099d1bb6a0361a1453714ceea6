@@ -1,0 +1,8 @@
+// 1.21.1	2026-06-17T00:59:14.5111652	Create Ice Age's Processing Recipes
+3121ed478dc62ca393aedd8b0d24fc84f26f35cf data/create_ice_age/recipe/filling/ice_cake.json
+f0315e3f5a18a016176a90b5c25f9d8cae8e558b data/create_ice_age/recipe/freezing_mixing/blue_ice.json
+ec69823123447987b53d197c27d62276a33f41fd data/create_ice_age/recipe/freezing_mixing/ice.json
+21a784b27b00a1ce6283d3239a6bc2ef4a8ed5e1 data/create_ice_age/recipe/freezing_mixing/ice_cake_base.json
+b5c135ba785380853dcacd241cc5b60cf83f1d39 data/create_ice_age/recipe/freezing_mixing/liquid_ice.json
+0c58270c23007ded5bc6f6aebbe4a1c6505e8004 data/create_ice_age/recipe/freezing_mixing/packed_ice.json
+c8fbf4863a41f6f88fb00b8cea75472b79528673 data/create_ice_age/recipe/freezing_mixing/powder_snow.json

@@ -1,0 +1,22 @@
+{
+  "block.create_ice_age.breeze_freezer": "Breeze Freezer",
+  "block.create_ice_age.liquid_ice": "Liquid Ice",
+  "create_ice_age.ponder.breeze_freezer.header": "Feeding Breeze Freezers",
+  "create_ice_age.ponder.breeze_freezer.text_1": "Breeze Freezers can provide Heat to Items processed in a Basin",
+  "create_ice_age.ponder.breeze_freezer.text_2": "For this, the Breeze has to be fed with freezable items",
+  "create_ice_age.ponder.breeze_freezer.text_3": "With an Ice Cake, the Breeze can reach an even stronger level of freeze",
+  "create_ice_age.ponder.breeze_freezer.text_4": "The feeding process can be automated using Deployers or Mechanical Arms",
+  "create_ice_age.ponder.empty_blaze_burner.header": "Using Empty Blaze Burners",
+  "create_ice_age.ponder.empty_blaze_burner.text_1": "Right-click a Breeze with the empty burner to capture it",
+  "create_ice_age.ponder.empty_blaze_burner.text_2": "Alternatively, Breezes can be collected from their Spawners directly",
+  "create_ice_age.ponder.empty_blaze_burner.text_3": "You now have an ideal freeze source for various machines",
+  "create_ice_age.recipe.freeze_requirement.freezing": "Freezing",
+  "create_ice_age.recipe.freeze_requirement.super_freezing": "Super Freezing",
+  "create_ice_age.recipe.freezing_mixing": "Freezing Mixing",
+  "fluid.create_ice_age.liquid_ice": "Liquid Ice",
+  "fluid.create_ice_age.powder_snow": "Powder Snow",
+  "item.create_ice_age.ice_cake": "Ice Cake",
+  "item.create_ice_age.ice_cake_base": "Ice Cake Base",
+  "item.create_ice_age.liquid_ice_bucket": "Liquid Ice Bucket",
+  "itemGroup.create_ice_age.base": "Create Ice Age"
+}

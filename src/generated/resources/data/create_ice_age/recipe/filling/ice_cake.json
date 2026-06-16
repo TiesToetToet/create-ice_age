@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "create_ice_age:ice_cake_base"
+    },
+    {
+      "type": "neoforge:single",
+      "amount": 250,
+      "fluid": "create_ice_age:liquid_ice"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_ice_age:ice_cake"
+    }
+  ]
+}
